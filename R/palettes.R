@@ -5,42 +5,58 @@
 #' # List names of available palettes
 #' names(palettes_washi)
 #'
-#' # Get hex codes from a palette using dollar `$name` or
-#' # double bracket `[["name"]]` operators for extracting
-#' # list elements
+#' # Get hex codes from a palette using dollar `$name` or double bracket
+#' # `[["name"]]` operators for extracting list elements
 #' palettes_washi$standard
+#'
 #' palettes_washi[["green_gradient"]]
 #'
 #' # Extract a color from the standard WaSHI palette
 #' palettes_washi[["standard"]][["green"]]
 #' @export
+
 palettes_washi <- list(
   # WaSHI standard brand colors
   standard = c(
     green = "#023b2c",
-    gray = "#3e3d3d",
     blue = "#335c67",
     red = "#a60f2d",
     gold = "#fcb040",
+    gray = "#3e3d3d",
+    ltgray = "#7C7979",
+    tan = "#ccc29c",
+    cream = "#F2F0E6"
+  ),
+  # WaSHI main colors
+  main = c(
+    green = "#023b2c",
+    blue = "#335c67",
+    red = "#a60f2d",
+    gold = "#fcb040"
+  ),
+  # WaSHI accent colors
+  accent = c(
+    gray = "#3e3d3d",
+    ltgray = "#7C7979",
     tan = "#ccc29c",
     cream = "#F2F0E6"
   ),
   # green highight color with subdued gray and tan colors
   green_highlight = c(
     green = "#023b2c",
-    gray = "#3e3d3d",
+    ltgray = "#7C7979",
     tan = "#ccc29c"
   ),
   # red highight color with subdued gray and tan colors
   red_highlight = c(
     red = "#a60f2d",
-    gray = "#3e3d3d",
+    ltgray = "#7C7979",
     tan = "#ccc29c"
   ),
   # gold highight color with subdued gray and tan colors
   gold_highlight = c(
     gold = "#fcb040",
-    gray = "#3e3d3d",
+    ltgray = "#7C7979",
     tan = "#ccc29c"
   ),
   # green gradient
@@ -52,9 +68,7 @@ palettes_washi <- list(
     "#6C8B7E",
     "#879F93",
     "#A2B3A8",
-    "#BCC7BC",
-    "#D7DBD1",
-    "#F2F0E6"
+    "#BCC7BC"
   ),
   # blue gradient
   blue_gradient = c(
@@ -65,9 +79,7 @@ palettes_washi <- list(
     "#879D9F",
     "#9DAEAD",
     "#B2BEBB",
-    "#C7CFC9",
-    "#DCDFD7",
-    "#F2F0E6"
+    "#C7CFC9"
   ),
   # red gradient
   red_gradient = c(
@@ -78,9 +90,7 @@ palettes_washi <- list(
     "#C7727F",
     "#D08C93",
     "#D8A4A8",
-    "#E1BDBC",
-    "#E9D6D1",
-    "#F2F0E6"
+    "#E1BDBC"
   )
 )
 
@@ -95,12 +105,14 @@ palettes_washi <- list(
 #'   Default is FALSE.
 #' @returns A vector of color hex codes.
 #' @examples
-#' palette_setup("standard")
+#' palette_setup("main")
+#'
 #' palette_setup("green_gradient", 12)
 #' @export
 palette_setup <- function(palette = "standard",
                           n,
                           reverse = FALSE) {
+
   if (!palette %in% names(palettes_washi)) {
     stop(glue::glue("There is no palette called '{palette}'.
          Use `names(palettes_washi)` to see available palettes."),
@@ -126,11 +138,14 @@ palette_setup <- function(palette = "standard",
 #' @inheritParams palette_setup
 #' @examples
 #' palette_view("standard")
+#'
 #' palette_view("gold_highlight", 3)
+#'
 #' palette_view("blue_gradient", 4, reverse = TRUE)
 #' @returns A plot with each color displayed.
 #' @export
 palette_view <- function(palette = "standard", n, reverse = FALSE) {
+
   if (missing(n)) {
     n <- length(palettes_washi[[palette]])
   }

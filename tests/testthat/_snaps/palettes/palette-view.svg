@@ -26,13 +26,14 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpNTkuMDR8Njg5Ljc2fDU5LjA0fDUwMi41Ng==)'>
-<rect x='59.04' y='59.04' width='90.10' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #023B2C;' />
-<rect x='149.14' y='59.04' width='90.10' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #3E3D3D;' />
-<rect x='239.25' y='59.04' width='90.10' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #335C67;' />
-<rect x='329.35' y='59.04' width='90.10' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #A60F2D;' />
-<rect x='419.45' y='59.04' width='90.10' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #FCB040;' />
-<rect x='509.55' y='59.04' width='90.10' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #CCC29C;' />
-<rect x='599.66' y='59.04' width='90.10' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #F2F0E6;' />
+<rect x='59.04' y='59.04' width='78.84' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #023B2C;' />
+<rect x='137.88' y='59.04' width='78.84' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #335C67;' />
+<rect x='216.72' y='59.04' width='78.84' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #A60F2D;' />
+<rect x='295.56' y='59.04' width='78.84' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #FCB040;' />
+<rect x='374.40' y='59.04' width='78.84' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #3E3D3D;' />
+<rect x='453.24' y='59.04' width='78.84' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #7C7979;' />
+<rect x='532.08' y='59.04' width='78.84' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #CCC29C;' />
+<rect x='610.92' y='59.04' width='78.84' height='443.52' style='stroke-width: 0.75; stroke: none; fill: #F2F0E6;' />
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 <polygon points='59.04,502.56 689.76,502.56 689.76,59.04 59.04,59.04 ' style='stroke-width: 0.75; fill: none;' />

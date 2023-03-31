@@ -7,13 +7,22 @@ test_that("palette_setup() works", {
   # Check that it works even without choosing `n` colors
   expect_equal(
     palette_setup("standard"),
-    c("#023B2C", "#3E3D3D", "#335C67", "#A60F2D", "#FCB040", "#CCC29C", "#F2F0E6")
+    c(
+      "#023B2C",
+      "#335C67",
+      "#A60F2D",
+      "#FCB040",
+      "#3E3D3D",
+      "#7C7979",
+      "#CCC29C",
+      "#F2F0E6"
+    )
   )
 
   # Check that reverse works
   expect_equal(
-    palette_setup("standard", 4, reverse = TRUE),
-    c("#F2F0E6", "#FCB040", "#335C67", "#023B2C")
+    palette_setup("main", reverse = TRUE),
+    c("#FCB040", "#A60F2D", "#335C67", "#023B2C")
   )
 
   # Check that an unavailable palette errors
@@ -23,5 +32,6 @@ test_that("palette_setup() works", {
 test_that("palette_view() works", {
   vdiffr::expect_doppelganger(
     title = "palette_view",
-    fig = palette_view("standard"))
+    fig = palette_view("standard")
+  )
 })

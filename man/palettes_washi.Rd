@@ -5,7 +5,7 @@
 \alias{palettes_washi}
 \title{WaSHI color palettes}
 \format{
-An object of class \code{list} of length 7.
+An object of class \code{list} of length 9.
 }
 \usage{
 palettes_washi
@@ -17,10 +17,10 @@ Color palettes are stored in a named list.
 # List names of available palettes
 names(palettes_washi)
 
-# Get hex codes from a palette using dollar `$name` or
-# double bracket `[["name"]]` operators for extracting
-# list elements
+# Get hex codes from a palette using dollar `$name` or double bracket
+# `[["name"]]` operators for extracting list elements
 palettes_washi$standard
+
 palettes_washi[["green_gradient"]]
 
 # Extract a color from the standard WaSHI palette

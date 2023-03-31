@@ -23,6 +23,8 @@ Show the colors within a palette in a plot.
 }
 \examples{
 palette_view("standard")
+
 palette_view("gold_highlight", 3)
+
 palette_view("blue_gradient", 4, reverse = TRUE)
 }
