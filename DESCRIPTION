@@ -4,6 +4,7 @@ Version: 0.0.0.9000
 Authors@R: c(
     person("Jadey", "Ryan", , "jryan@agr.wa.gov", role = c("aut", "cre")),
     person("Molly", "Mcilquham", , "molly.mcilquham@wsu.edu", role = c("aut")),
+    person("Dani", "Gelardi", , "dgelardi@agr.wa.gov", role = c("aut")),
     person("Washington State Department of Agriculture", role = c("cph", "fnd"))
   )
 Description: Helps create plots and tables in a consistent style with
@@ -12,7 +13,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-URL: https://github.com/WA-Department-of-Agriculture/washi
+URL: https://github.com/WA-Department-of-Agriculture/washi,
+    https://wa-department-of-agriculture.github.io/washi/
 BugReports: https://github.com/WA-Department-of-Agriculture/washi/issues
 Suggests: 
     covr,
