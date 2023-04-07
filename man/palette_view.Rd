@@ -4,7 +4,7 @@
 \alias{palette_view}
 \title{View a WaSHI palette}
 \usage{
-palette_view(palette = "standard", n, reverse = FALSE)
+palette_view(palette = "color_blind", n, reverse = FALSE)
 }
 \arguments{
 \item{palette}{Character name of palette in palettes_washi. See
@@ -24,7 +24,7 @@ Show the colors within a palette in a plot.
 \examples{
 palette_view("standard")
 
-palette_view("gold_highlight", 3)
+palette_view("color_blind")
 
 palette_view("blue_gradient", 4, reverse = TRUE)
 }

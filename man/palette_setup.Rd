@@ -22,7 +22,7 @@ A vector of color hex codes.
 Choose desired number of colors and whether the colors are reversed.
 }
 \examples{
-palette_setup("main")
+palette_setup("color_blind")
 
 palette_setup("green_gradient", 12)
 }

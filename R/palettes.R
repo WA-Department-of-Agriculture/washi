@@ -27,12 +27,15 @@ palettes_washi <- list(
     tan = "#ccc29c",
     cream = "#F2F0E6"
   ),
-  # WaSHI main colors
-  main = c(
-    green = "#023b2c",
-    blue = "#335c67",
-    red = "#a60f2d",
-    gold = "#fcb040"
+  # WaSHI 6 color blind safe palette
+  # checked accessibility with Adobe color wheel and Viz Palette
+  color_blind = c(
+    green = "#03634A",
+    gold = "#FCB040",
+    blue = "#7AB7C6",
+    red = "#700004",
+    ltgray = "#7C7979",
+    tan = "#D3CF9D"
   ),
   # WaSHI accent colors
   accent = c(
@@ -44,6 +47,12 @@ palettes_washi <- list(
   # green highight color with subdued gray and tan colors
   green_highlight = c(
     green = "#023b2c",
+    ltgray = "#7C7979",
+    tan = "#ccc29c"
+  ),
+  # blue highight color with subdued gray and tan colors
+  blue_highlight = c(
+    blue = "#335c67",
     ltgray = "#7C7979",
     tan = "#ccc29c"
   ),
@@ -91,6 +100,17 @@ palettes_washi <- list(
     "#D08C93",
     "#D8A4A8",
     "#E1BDBC"
+  ),
+  # gold gradient
+  gold_gradient = c(
+    "#FCB040",
+    "#FBB54F",
+    "#FABB5E",
+    "#F9C16D",
+    "#F8C77C",
+    "#F7CD8B",
+    "#F6D29A",
+    "#F5D8A9"
   )
 )
 
@@ -105,14 +125,13 @@ palettes_washi <- list(
 #'   Default is FALSE.
 #' @returns A vector of color hex codes.
 #' @examples
-#' palette_setup("main")
+#' palette_setup("color_blind")
 #'
 #' palette_setup("green_gradient", 12)
 #' @export
 palette_setup <- function(palette = "standard",
                           n,
                           reverse = FALSE) {
-
   if (!palette %in% names(palettes_washi)) {
     stop(glue::glue("There is no palette called '{palette}'.
          Use `names(palettes_washi)` to see available palettes."),
@@ -139,13 +158,14 @@ palette_setup <- function(palette = "standard",
 #' @examples
 #' palette_view("standard")
 #'
-#' palette_view("gold_highlight", 3)
+#' palette_view("color_blind")
 #'
 #' palette_view("blue_gradient", 4, reverse = TRUE)
 #' @returns A plot with each color displayed.
 #' @export
-palette_view <- function(palette = "standard", n, reverse = FALSE) {
-
+palette_view <- function(palette = "color_blind",
+                         n,
+                         reverse = FALSE) {
   if (missing(n)) {
     n <- length(palettes_washi[[palette]])
   }

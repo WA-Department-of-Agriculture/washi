@@ -3,4 +3,4 @@
 export(palette_setup)
 export(palette_view)
 export(palettes_washi)
-export(scale_color_washi)
+export(scale_washi)

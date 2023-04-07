@@ -16,7 +16,9 @@ knitr::opts_chunk$set(
 # washi
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml)  [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)  [![Codecov test coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
+
+[![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml) [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![Codecov test coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
+
 <!-- badges: end -->
 
 Inspired by other branding R packages such as [`glitr`](https://github.com/USAID-OHA-SI/glitr), [`ratlas`](https://github.com/atlas-aai/ratlas), and [`nmfspalette`](https://github.com/nmfs-fish-tools/nmfspalette), `washi` provides color palettes and themes consistent with Washington Soil Health Initiative (WaSHI) branding.
@@ -25,7 +27,30 @@ Inspired by other branding R packages such as [`glitr`](https://github.com/USAID
 
 You can install the development version of washi from [GitHub](https://github.com/) with:
 
-``` r
+```{r install}
 # install.packages("devtools")
-devtools::install_github("WA-Department-of-Agriculture/washi")
+# devtools::install_github("WA-Department-of-Agriculture/washi")
+library(washi)
+```
+
+## Palettes
+
+To list the names of all available palettes, call `names(palettes_washi)`. To view a palette, use the `palette_view()` function.
+
+##### All WaSHI standard colors
+```{r standard, fig.height = 2.5}
+palette_view("standard")
+```
+
+##### WaSHI colors adjusted to be color-blind safe
+```{r color_blind, fig.height = 2.5}
+palette_view("color_blind")
+```
+
+##### Color gradients
+
+Available in green, blue, red, and gold.
+
+```{r green_gradient, fig.height = 2.5}
+palette_view("green_gradient")
 ```

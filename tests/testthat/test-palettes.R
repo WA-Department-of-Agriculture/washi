@@ -21,8 +21,8 @@ test_that("palette_setup() works", {
 
   # Check that reverse works
   expect_equal(
-    palette_setup("main", reverse = TRUE),
-    c("#FCB040", "#A60F2D", "#335C67", "#023B2C")
+    palette_setup("color_blind", reverse = TRUE),
+    c("#D3CF9D", "#7C7979", "#700004", "#7AB7C6", "#FCB040", "#03634A")
   )
 
   # Check that an unavailable palette errors

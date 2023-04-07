@@ -5,7 +5,7 @@
 \alias{palettes_washi}
 \title{WaSHI color palettes}
 \format{
-An object of class \code{list} of length 9.
+An object of class \code{list} of length 11.
 }
 \usage{
 palettes_washi

@@ -18,11 +18,11 @@ URL: https://github.com/WA-Department-of-Agriculture/washi,
 BugReports: https://github.com/WA-Department-of-Agriculture/washi/issues
 Suggests: 
     covr,
-    ggplot2,
     testthat (>= 3.0.0),
     vdiffr
 Config/testthat/edition: 3
 Imports: 
+    ggplot2,
     glue,
     graphics,
     grDevices,
