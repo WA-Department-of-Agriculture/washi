@@ -125,6 +125,7 @@ washi_pal <- list(
 #' @param reverse Boolean indicating whether the palette should be
 #'   reversed. Default is FALSE.
 #' @returns A vector of color hex codes.
+#' @export
 #' @examples
 #' washi_pal_setup("color_blind")
 #'

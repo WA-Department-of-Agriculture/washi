@@ -22,10 +22,17 @@ washi_flextable <- function(data,
                             header_font_color = "white",
                             header_bg_color = washi_pal[["standard"]][["green"]],
                             border_color = washi_pal[["standard"]][["tan"]]) {
-  # if (!is.numeric(cols_bold)) rlang::(class = "Numeric")
+  if (is.character(cols_bold)) {
+    cli::cli_abort(c(
+      "`cols_bold` must be numeric column indices."
+    ))
+  }
 
-  # Import fonts
-  washi_import_fonts()
+  if (!is.character(header_font_color))
+    cli::cli_abort("`header_font_color` must be character color name or code.")
+
+  if (!is.character(header_bg_color))
+    cli::cli_abort("`header_bg_color` must be character color name or code..")
 
   # Set default font to Poppins
   flextable::set_flextable_defaults(font.family = "Poppins")

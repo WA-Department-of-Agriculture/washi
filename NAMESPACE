@@ -3,5 +3,6 @@
 export(washi_flextable)
 export(washi_import_fonts)
 export(washi_pal)
+export(washi_pal_setup)
 export(washi_pal_view)
 export(washi_scale)
