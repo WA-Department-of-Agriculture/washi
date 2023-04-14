@@ -16,15 +16,21 @@
     <loc>https://wa-department-of-agriculture.github.io/washi/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://wa-department-of-agriculture.github.io/washi/reference/palette_setup.html</loc>
+    <loc>https://wa-department-of-agriculture.github.io/washi/reference/washi_flextable.html</loc>
   </url>
   <url>
-    <loc>https://wa-department-of-agriculture.github.io/washi/reference/palette_view.html</loc>
+    <loc>https://wa-department-of-agriculture.github.io/washi/reference/washi_import_fonts.html</loc>
   </url>
   <url>
-    <loc>https://wa-department-of-agriculture.github.io/washi/reference/palettes_washi.html</loc>
+    <loc>https://wa-department-of-agriculture.github.io/washi/reference/washi_pal.html</loc>
   </url>
   <url>
-    <loc>https://wa-department-of-agriculture.github.io/washi/reference/scale_washi.html</loc>
+    <loc>https://wa-department-of-agriculture.github.io/washi/reference/washi_pal_setup.html</loc>
+  </url>
+  <url>
+    <loc>https://wa-department-of-agriculture.github.io/washi/reference/washi_pal_view.html</loc>
+  </url>
+  <url>
+    <loc>https://wa-department-of-agriculture.github.io/washi/reference/washi_scale.html</loc>
   </url>
 </urlset>

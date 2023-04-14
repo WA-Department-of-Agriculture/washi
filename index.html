@@ -78,27 +78,29 @@
 <div class="section level2">
 <h2 id="palettes">Palettes<a class="anchor" aria-label="anchor" href="#palettes"></a>
 </h2>
-<p>To list the names of all available palettes, call <code>names(palettes_washi)</code>. To view a palette, use the <code><a href="reference/palette_view.html">palette_view()</a></code> function.</p>
-<div class="section level5">
-<h5 id="all-washi-standard-colors">All WaSHI standard colors<a class="anchor" aria-label="anchor" href="#all-washi-standard-colors"></a>
-</h5>
+<p>To list the names of all available palettes, call <code>names(washi_pal)</code>. To view a palette, use the <code><a href="reference/washi_pal_view.html">washi_pal_view()</a></code> function.</p>
+<div class="section level4">
+<h4 id="all-washi-standard-colors">All WaSHI standard colors<a class="anchor" aria-label="anchor" href="#all-washi-standard-colors"></a>
+</h4>
+<p>This palette is primarily to access individual brand colors for fonts, table headers, graphic backgrounds, etc. These colors are not accessible to those who may have color blindness.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/palette_view.html">palette_view</a></span><span class="op">(</span><span class="st">"standard"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"standard"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-standard-1.png" width="100%"></p>
+<p>Individual colors can be accessed with <code>washi_pal[["standard"]][["green"]]</code>.</p>
 </div>
-<div class="section level5">
-<h5 id="washi-colors-adjusted-to-be-color-blind-safe">WaSHI colors adjusted to be color-blind safe<a class="anchor" aria-label="anchor" href="#washi-colors-adjusted-to-be-color-blind-safe"></a>
-</h5>
+<div class="section level4">
+<h4 id="washi-colors-adjusted-to-be-color-blind-safe">WaSHI colors adjusted to be color-blind safe<a class="anchor" aria-label="anchor" href="#washi-colors-adjusted-to-be-color-blind-safe"></a>
+</h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/palette_view.html">palette_view</a></span><span class="op">(</span><span class="st">"color_blind"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"color_blind"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-color_blind-1.png" width="100%"></p>
 </div>
-<div class="section level5">
-<h5 id="color-gradients">Color gradients<a class="anchor" aria-label="anchor" href="#color-gradients"></a>
-</h5>
+<div class="section level4">
+<h4 id="color-gradients">Color gradients<a class="anchor" aria-label="anchor" href="#color-gradients"></a>
+</h4>
 <p>Available in green, blue, red, and gold.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/palette_view.html">palette_view</a></span><span class="op">(</span><span class="st">"green_gradient"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"green_gradient"</span>, n <span class="op">=</span> <span class="fl">4</span>, reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-green_gradient-1.png" width="100%"></p>
 </div>
 </div>
