@@ -1,10 +1,12 @@
-test_that("scale_washi() works", {
+test_that("washi_scale() works", {
   # Check that a ScaleDiscrete object is returned
-  expect_s3_class(scale_washi(), "ScaleDiscrete")
+  expect_s3_class(washi_scale(), "ScaleDiscrete")
 
   # Check that discrete = FALSE works
-  expect_s3_class(scale_washi(discrete = FALSE),
-                  "ScaleContinuous")
+  expect_s3_class(
+    washi_scale(discrete = FALSE),
+    "ScaleContinuous"
+  )
 
   # Check that a ggplot object is returned
   plot <- ggplot2::ggplot(
@@ -15,10 +17,19 @@ test_that("scale_washi() works", {
     )
   ) +
     ggplot2::geom_point() +
-    scale_washi()
+    washi_scale()
 
   expect_true(ggplot2::is.ggplot(plot))
 
   # Check that alpha > 1 errors
-  expect_error(scale_washi(alpha = 5))
+  expect_error(
+    washi_scale(alpha = 5),
+    "Alpha must be between 0 and 1."
+  )
+
+  # Check that non-logical discrete errors
+  expect_error(
+    washi_scale(discrete = "a"),
+    "`discrete` must be `TRUE` or `FALSE`."
+  )
 })

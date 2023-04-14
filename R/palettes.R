@@ -3,19 +3,19 @@
 #' Color palettes are stored in a named list.
 #' @examples
 #' # List names of available palettes
-#' names(palettes_washi)
+#' names(washi_pal)
 #'
 #' # Get hex codes from a palette using dollar `$name` or double bracket
 #' # `[["name"]]` operators for extracting list elements
-#' palettes_washi$standard
+#' washi_pal$standard
 #'
-#' palettes_washi[["green_gradient"]]
+#' washi_pal[["green_gradient"]]
 #'
 #' # Extract a color from the standard WaSHI palette
-#' palettes_washi[["standard"]][["green"]]
+#' washi_pal[["standard"]][["green"]]
 #' @export
 
-palettes_washi <- list(
+washi_pal <- list(
   # WaSHI standard brand colors
   standard = c(
     green = "#023b2c",
@@ -116,34 +116,46 @@ palettes_washi <- list(
 
 #' Setup a color palette
 #'
-#' Choose desired number of colors and whether the colors are reversed.
+#' Choose desired number of colors and whether the colors are
+#' reversed.
 #'
-#' @param palette Character name of palette in palettes_washi. See
-#'   `names(palettes_washi)` for a list of available palettes.
+#' @param palette Character name of palette in washi_pal. See
+#'   `names(washi_pal)` for a list of available palettes.
 #' @param n Number of colors in palette.
-#' @param reverse Boolean indicating whether the palette should be reversed.
-#'   Default is FALSE.
+#' @param reverse Boolean indicating whether the palette should be
+#'   reversed. Default is FALSE.
 #' @returns A vector of color hex codes.
 #' @examples
-#' palette_setup("color_blind")
+#' washi_pal_setup("color_blind")
 #'
-#' palette_setup("green_gradient", 12)
-#' @export
-palette_setup <- function(palette = "standard",
-                          n,
-                          reverse = FALSE) {
-  if (!palette %in% names(palettes_washi)) {
-    stop(glue::glue("There is no palette called '{palette}'.
-         Use `names(palettes_washi)` to see available palettes."),
-      call. = FALSE
-    )
+#' washi_pal_setup("green_gradient", 12)
+washi_pal_setup <- function(palette = "standard",
+                            n,
+                            reverse = FALSE) {
+  if (!palette %in% names(washi_pal)) {
+    cli::cli_abort(c(
+      "There is no palette called `{palette}`.",
+      "i" = "List available palettes with `names(washi_pal)`."
+    ))
+  }
+
+  if (!is.logical(reverse)) {
+    cli::cli_abort(c(
+      "`reverse` must be `TRUE` or `FALSE`."
+    ))
   }
 
   if (missing(n)) {
-    n <- length(palettes_washi[[palette]])
+    n <- length(washi_pal[[palette]])
   }
 
-  pal <- palettes_washi[[palette]]
+  if (!is.numeric(n) | is.null(n)) {
+    cli::cli_abort(c(
+      "`n` must be numeric."
+    ))
+  }
+
+  pal <- washi_pal[[palette]]
 
   if (reverse) pal <- rev(pal)
 
@@ -154,22 +166,22 @@ palette_setup <- function(palette = "standard",
 #'
 #' Show the colors within a palette in a plot.
 #'
-#' @inheritParams palette_setup
+#' @inheritParams washi_pal_setup
 #' @examples
-#' palette_view("standard")
+#' washi_pal_view("standard")
 #'
-#' palette_view("color_blind")
+#' washi_pal_view("color_blind")
 #'
-#' palette_view("blue_gradient", 4, reverse = TRUE)
+#' washi_pal_view("blue_gradient", 4, reverse = TRUE)
 #' @returns A plot with each color displayed.
 #' @export
-palette_view <- function(palette = "color_blind",
-                         n,
-                         reverse = FALSE) {
+washi_pal_view <- function(palette = "color_blind",
+                           n,
+                           reverse = FALSE) {
   if (missing(n)) {
-    n <- length(palettes_washi[[palette]])
+    n <- length(washi_pal[[palette]])
   }
-  pal <- palette_setup(palette, n, reverse)
+  pal <- washi_pal_setup(palette, n, reverse)
 
   graphics::image(1:n, 1, as.matrix(1:n),
     col = pal,

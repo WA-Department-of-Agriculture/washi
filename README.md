@@ -33,32 +33,38 @@ library(washi)
 
 ## Palettes
 
-To list the names of all available palettes, call
-`names(palettes_washi)`. To view a palette, use the `palette_view()`
-function.
+To list the names of all available palettes, call `names(washi_pal)`. To
+view a palette, use the `washi_pal_view()` function.
 
-##### All WaSHI standard colors
+#### All WaSHI standard colors
+
+This palette is primarily to access individual brand colors for fonts,
+table headers, graphic backgrounds, etc. These colors are not accessible
+to those who may have color blindness.
 
 ``` r
-palette_view("standard")
+washi_pal_view("standard")
 ```
 
 <img src="man/figures/README-standard-1.png" width="100%" />
 
-##### WaSHI colors adjusted to be color-blind safe
+Individual colors can be accessed with
+`washi_pal[["standard"]][["green"]]`.
+
+#### WaSHI colors adjusted to be color-blind safe
 
 ``` r
-palette_view("color_blind")
+washi_pal_view("color_blind")
 ```
 
 <img src="man/figures/README-color_blind-1.png" width="100%" />
 
-##### Color gradients
+#### Color gradients
 
 Available in green, blue, red, and gold.
 
 ``` r
-palette_view("green_gradient")
+washi_pal_view("green_gradient", n = 4, reverse = TRUE)
 ```
 
 <img src="man/figures/README-green_gradient-1.png" width="100%" />
