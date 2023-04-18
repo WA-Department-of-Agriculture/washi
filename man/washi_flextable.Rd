@@ -34,5 +34,5 @@ A flextable formatted in WaSHI's style.
 Creates a flextable in WaSHI's style.
 }
 \examples{
-washi_flextable(head(mtcars))
+washi_flextable(head(mtcars), cols_bold = 1)
 }

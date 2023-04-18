@@ -16,23 +16,27 @@
 #' @export
 #'
 #' @examples
-#' washi_flextable(head(mtcars))
+#' washi_flextable(head(mtcars), cols_bold = 1)
 washi_flextable <- function(data,
                             cols_bold = NULL,
                             header_font_color = "white",
                             header_bg_color = washi_pal[["standard"]][["green"]],
                             border_color = washi_pal[["standard"]][["tan"]]) {
+  washi_check_fonts()
+
   if (is.character(cols_bold)) {
     cli::cli_abort(c(
       "`cols_bold` must be numeric column indices."
     ))
   }
 
-  if (!is.character(header_font_color))
+  if (!is.character(header_font_color)) {
     cli::cli_abort("`header_font_color` must be character color name or code.")
+  }
 
-  if (!is.character(header_bg_color))
+  if (!is.character(header_bg_color)) {
     cli::cli_abort("`header_bg_color` must be character color name or code..")
+  }
 
   # Set default font to Poppins
   flextable::set_flextable_defaults(font.family = "Poppins")

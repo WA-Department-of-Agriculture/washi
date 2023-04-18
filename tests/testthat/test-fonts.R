@@ -1,11 +1,16 @@
-test_that("washi_import_fonts() works", {
+test_that("washi_check_fonts() works", {
+  # Check type
+  expect_type(washi_check_fonts(), "logical")
 
-  # Function to check if fonts are installed
-  fonts_installed <- function() {
-    all(c("Lato", "Poppins") %in% extrafont::fonts())
-  }
+  # Check warning if fonts not already imported
+  skip_if(washi_check_fonts(), message = "Fonts already imported.")
+  expect_warning(washi_check_fonts(),
+                 "Fonts not imported. Call `washi_import_fonts()`.")
+})
+
+test_that("washi_import_fonts() works", {
   # Expect success message if fonts are newly imported
-  if (!fonts_installed()) {
+  if (isFALSE(washi_check_fonts())) {
     expect_message(
       washi_import_fonts(),
       "imported"
@@ -18,5 +23,5 @@ test_that("washi_import_fonts() works", {
     )
   }
   # Check that both fonts are installed
-  expect_true(fonts_installed())
+  expect_true(washi_check_fonts())
 })
