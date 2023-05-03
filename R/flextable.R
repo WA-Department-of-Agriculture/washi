@@ -22,7 +22,6 @@ washi_flextable <- function(data,
                             header_font_color = "white",
                             header_bg_color = washi_pal[["standard"]][["green"]],
                             border_color = washi_pal[["standard"]][["tan"]]) {
-
   if (is.character(cols_bold)) {
     cli::cli_abort(c(
       "`cols_bold` must be numeric column indices."
