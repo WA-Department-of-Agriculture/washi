@@ -5,9 +5,9 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
 
@@ -30,6 +30,27 @@ You can install the development version of washi from
 # devtools::install_github("WA-Department-of-Agriculture/washi")
 library(washi)
 ```
+
+## Requirements
+
+### Install and register fonts
+
+`washi` uses Poppins and Lato fonts. You can install these on your
+computer by running:
+
+``` r
+washi_install_fonts()
+```
+
+This function will open a window with the font files for you to install,
+and provides instructions for installation. Once they are installed, you
+will need to register them for use in R with:
+
+``` r
+washi_register_fonts()
+```
+
+Then restart your R session (Ctrl + Shift + F10).
 
 ## Palettes
 
