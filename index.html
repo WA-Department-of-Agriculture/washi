@@ -76,6 +76,21 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/WA-Department-of-Agriculture/washi" class="external-link">washi</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="requirements">Requirements<a class="anchor" aria-label="anchor" href="#requirements"></a>
+</h2>
+<div class="section level3">
+<h3 id="install-and-register-fonts">Install and register fonts<a class="anchor" aria-label="anchor" href="#install-and-register-fonts"></a>
+</h3>
+<p><code>washi</code> uses Poppins and Lato fonts. You can install these on your computer by running:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/washi_install_fonts.html">washi_install_fonts</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>This function will open a window with the font files for you to install, and provides instructions for installation. Once they are installed, you will need to register them for use in R with:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/washi_register_fonts.html">washi_register_fonts</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Then restart your R session (Ctrl + Shift + F10).</p>
+</div>
+</div>
+<div class="section level2">
 <h2 id="palettes">Palettes<a class="anchor" aria-label="anchor" href="#palettes"></a>
 </h2>
 <p>To list the names of all available palettes, call <code>names(washi_pal)</code>. To view a palette, use the <code><a href="reference/washi_pal_view.html">washi_pal_view()</a></code> function.</p>
@@ -83,7 +98,7 @@
 <h4 id="all-washi-standard-colors">All WaSHI standard colors<a class="anchor" aria-label="anchor" href="#all-washi-standard-colors"></a>
 </h4>
 <p>This palette is primarily to access individual brand colors for fonts, table headers, graphic backgrounds, etc. These colors are not accessible to those who may have color blindness.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"standard"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-standard-1.png" width="100%"></p>
 <p>Individual colors can be accessed with <code>washi_pal[["standard"]][["green"]]</code>.</p>
@@ -91,7 +106,7 @@
 <div class="section level4">
 <h4 id="washi-colors-adjusted-to-be-color-blind-safe">WaSHI colors adjusted to be color-blind safe<a class="anchor" aria-label="anchor" href="#washi-colors-adjusted-to-be-color-blind-safe"></a>
 </h4>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"color_blind"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-color_blind-1.png" width="100%"></p>
 </div>
@@ -99,7 +114,7 @@
 <h4 id="color-gradients">Color gradients<a class="anchor" aria-label="anchor" href="#color-gradients"></a>
 </h4>
 <p>Available in green, blue, red, and gold.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"green_gradient"</span>, n <span class="op">=</span> <span class="fl">4</span>, reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-green_gradient-1.png" width="100%"></p>
 </div>
@@ -143,8 +158,8 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main" class="external-link"><img src="https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
