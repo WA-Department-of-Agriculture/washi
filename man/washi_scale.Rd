@@ -61,7 +61,7 @@ example_data_wide |>
   washi_scale("green_gradient", reverse = TRUE, discrete = FALSE)
 }
 \seealso{
-Other ggplot2: 
+Other ggplot2 functions: 
 \code{\link{washi_theme}()}
 }
-\concept{ggplot2}
+\concept{ggplot2 functions}

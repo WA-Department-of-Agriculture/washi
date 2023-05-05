@@ -28,6 +28,6 @@ reference:
 - title: "Tables"
   contents:
   - washi_flextable
-- title: "Data"
+- title: "Example data"
   contents:
   - matches("data")

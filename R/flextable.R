@@ -14,7 +14,7 @@
 #'
 #' @returns A flextable formatted in WaSHI's style.
 #' @export
-#' @family table
+#' @family table functions
 #'
 #' @examples
 #' subset(example_data_wide, select = c(

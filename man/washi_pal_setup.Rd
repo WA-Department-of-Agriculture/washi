@@ -28,8 +28,8 @@ washi_pal_setup("color_blind")
 washi_pal_setup("green_gradient", 12)
 }
 \seealso{
-Other color palette: 
+Other color palette functions: 
 \code{\link{washi_pal_view}()},
 \code{\link{washi_pal}}
 }
-\concept{color palette}
+\concept{color palette functions}

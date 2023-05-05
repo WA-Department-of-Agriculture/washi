@@ -10,7 +10,7 @@ washi_install_fonts()
 Opens the font files to install on your computer.
 }
 \seealso{
-Other font: 
+Other font functions: 
 \code{\link{washi_register_fonts}()}
 }
-\concept{font}
+\concept{font functions}

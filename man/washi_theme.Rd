@@ -62,7 +62,7 @@ displayed for the y axis. Default is TRUE.}
 displayed for the x axis. Default is TRUE.}
 
 \item{...}{Pass any parameters from theme that are not already
-defined within}
+defined within.}
 }
 \value{
 \code{ggplot2} object
@@ -77,36 +77,39 @@ call to \code{\link[ggplot2:theme]{ggplot2::theme()}} with the desired changes.
 library(extrafont)
 library(ggplot2)
 
-# Single geom_point plot
-example_data_wide |>
-  subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
-  ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
-  labs(
-    title = "washi_theme() + washi_scale()",
-    subtitle = "This is a subtitle.",
-    caption = "This is a caption."
-  ) +
-  geom_point(size = 2.5) +
-  washi_theme() +
-  washi_scale()
+# Suppress warnings for R-CMD check
+suppressWarnings({
+  # Single geom_point plot
+  example_data_wide |>
+    subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
+    ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
+    labs(
+      title = "washi_theme() + washi_scale()",
+      subtitle = "This is a subtitle.",
+      caption = "This is a caption."
+    ) +
+    geom_point(size = 2.5) +
+    washi_theme() +
+    washi_scale()
 
-# Facetted geom_bar plot
-example_data_long |>
-  subset(measurement \%in\% c("totalC_\%", "poxC_mg.kg")) |>
-  ggplot(aes(x = value, fill = texture, color = texture)) +
-  labs(
-    title = "washi_theme() + washi_scale()",
-    subtitle = "Example of facet_grid()."
-  ) +
-  geom_density(alpha = 0.4) +
-  facet_wrap(. ~ measurement, scales = "free") +
-  washi_theme(legend_position = "bottom") +
-  washi_scale() +
-  xlab(NULL) +
-  guides(col = guide_legend(nrow = 2, byrow = TRUE))
+  # Facetted geom_bar plot
+  example_data_long |>
+    subset(measurement \%in\% c("totalC_\%", "poxC_mg.kg")) |>
+    ggplot(aes(x = value, fill = texture, color = texture)) +
+    labs(
+      title = "washi_theme() + washi_scale()",
+      subtitle = "Example of facet_grid()."
+    ) +
+    geom_density(alpha = 0.4) +
+    facet_wrap(. ~ measurement, scales = "free") +
+    washi_theme(legend_position = "bottom") +
+    washi_scale() +
+    xlab(NULL) +
+    guides(col = guide_legend(nrow = 2, byrow = TRUE))
+})
 }
 \seealso{
-Other ggplot2: 
+Other ggplot2 functions: 
 \code{\link{washi_scale}()}
 }
-\concept{ggplot2}
+\concept{ggplot2 functions}

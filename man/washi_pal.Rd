@@ -27,9 +27,9 @@ washi_pal[["green_gradient"]]
 washi_pal[["standard"]][["green"]]
 }
 \seealso{
-Other color palette: 
+Other color palette functions: 
 \code{\link{washi_pal_setup}()},
 \code{\link{washi_pal_view}()}
 }
-\concept{color palette}
+\concept{color palette functions}
 \keyword{datasets}

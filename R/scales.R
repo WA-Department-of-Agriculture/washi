@@ -16,7 +16,7 @@
 #'   or FALSE
 #' @returns A `ScaleContinuous` or `ScaleDiscrete` object that can be
 #'   added to a `ggplot` object.
-#' @family ggplot2
+#' @family ggplot2 functions
 #' @examples
 #' library(ggplot2)
 #'

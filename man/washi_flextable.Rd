@@ -39,4 +39,4 @@ subset(example_data_wide, select = c(
 )) |>
   washi_flextable(cols_bold = 1)
 }
-\concept{table}
+\concept{table functions}

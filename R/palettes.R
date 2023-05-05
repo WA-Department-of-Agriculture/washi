@@ -2,7 +2,7 @@
 #'
 #' Color palettes are stored in a named list.
 #'
-#' @family color palette
+#' @family color palette functions
 #' @examples
 #' # List names of available palettes
 #' names(washi_pal)
@@ -128,7 +128,7 @@ washi_pal <- list(
 #'   reversed. Default is FALSE.
 #'
 #' @returns A vector of color hex codes.
-#' @family color palette
+#' @family color palette functions
 #' @examples
 #' washi_pal_setup("color_blind")
 #'
@@ -173,7 +173,7 @@ washi_pal_setup <- function(palette = "standard",
 #'
 #' @inheritParams washi_pal_setup
 #' @returns A plot with each color displayed.
-#' @family color palette
+#' @family color palette functions
 #'
 #' @examples
 #' washi_pal_view("standard")

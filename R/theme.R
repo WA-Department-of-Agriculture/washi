@@ -30,43 +30,46 @@
 #' @param gridline_y Boolean indicating whether major gridlines are
 #'   displayed for the y axis. Default is TRUE.
 #' @param ... Pass any parameters from theme that are not already
-#'   defined within
+#'   defined within.
 #'
 #' @importFrom ggplot2 %+replace%
 #' @returns `ggplot2` object
-#' @family ggplot2
+#' @family ggplot2 functions
 #'
 #' @examples
 #' library(extrafont)
 #' library(ggplot2)
 #'
-#' # Single geom_point plot
-#' example_data_wide |>
-#'   subset(crop %in% c("Apple", "Cherry", "Potato")) |>
-#'   ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
-#'   labs(
-#'     title = "washi_theme() + washi_scale()",
-#'     subtitle = "This is a subtitle.",
-#'     caption = "This is a caption."
-#'   ) +
-#'   geom_point(size = 2.5) +
-#'   washi_theme() +
-#'   washi_scale()
+#' # Suppress warnings for R-CMD check
+#' suppressWarnings({
+#'   # Single geom_point plot
+#'   example_data_wide |>
+#'     subset(crop %in% c("Apple", "Cherry", "Potato")) |>
+#'     ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
+#'     labs(
+#'       title = "washi_theme() + washi_scale()",
+#'       subtitle = "This is a subtitle.",
+#'       caption = "This is a caption."
+#'     ) +
+#'     geom_point(size = 2.5) +
+#'     washi_theme() +
+#'     washi_scale()
 #'
-#' # Facetted geom_bar plot
-#' example_data_long |>
-#'   subset(measurement %in% c("totalC_%", "poxC_mg.kg")) |>
-#'   ggplot(aes(x = value, fill = texture, color = texture)) +
-#'   labs(
-#'     title = "washi_theme() + washi_scale()",
-#'     subtitle = "Example of facet_grid()."
-#'   ) +
-#'   geom_density(alpha = 0.4) +
-#'   facet_wrap(. ~ measurement, scales = "free") +
-#'   washi_theme(legend_position = "bottom") +
-#'   washi_scale() +
-#'   xlab(NULL) +
-#'   guides(col = guide_legend(nrow = 2, byrow = TRUE))
+#'   # Facetted geom_bar plot
+#'   example_data_long |>
+#'     subset(measurement %in% c("totalC_%", "poxC_mg.kg")) |>
+#'     ggplot(aes(x = value, fill = texture, color = texture)) +
+#'     labs(
+#'       title = "washi_theme() + washi_scale()",
+#'       subtitle = "Example of facet_grid()."
+#'     ) +
+#'     geom_density(alpha = 0.4) +
+#'     facet_wrap(. ~ measurement, scales = "free") +
+#'     washi_theme(legend_position = "bottom") +
+#'     washi_scale() +
+#'     xlab(NULL) +
+#'     guides(col = guide_legend(nrow = 2, byrow = TRUE))
+#' })
 #' @export
 washi_theme <- function(font_title = "Lato Black",
                         color_title = "#151414",
