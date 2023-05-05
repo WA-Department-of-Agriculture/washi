@@ -40,8 +40,6 @@
 #' library(extrafont)
 #' library(ggplot2)
 #'
-#' # Suppress warnings for R-CMD check
-#' suppressWarnings({
 #'   # Single geom_point plot
 #'   example_data_wide |>
 #'     subset(crop %in% c("Apple", "Cherry", "Potato")) |>
@@ -57,7 +55,8 @@
 #'
 #'   # Facetted geom_bar plot
 #'   example_data_long |>
-#'     subset(measurement %in% c("totalC_%", "poxC_mg.kg")) |>
+#'     subset(measurement %in% c("totalC_%", "poxC_mg.kg") &
+#'     !texture == "Loamy Sand") |>
 #'     ggplot(aes(x = value, fill = texture, color = texture)) +
 #'     labs(
 #'       title = "washi_theme() + washi_scale()",
@@ -69,7 +68,6 @@
 #'     washi_scale() +
 #'     xlab(NULL) +
 #'     guides(col = guide_legend(nrow = 2, byrow = TRUE))
-#' })
 #' @export
 washi_theme <- function(font_title = "Lato Black",
                         color_title = "#151414",

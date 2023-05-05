@@ -77,8 +77,6 @@ call to \code{\link[ggplot2:theme]{ggplot2::theme()}} with the desired changes.
 library(extrafont)
 library(ggplot2)
 
-# Suppress warnings for R-CMD check
-suppressWarnings({
   # Single geom_point plot
   example_data_wide |>
     subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
@@ -94,7 +92,8 @@ suppressWarnings({
 
   # Facetted geom_bar plot
   example_data_long |>
-    subset(measurement \%in\% c("totalC_\%", "poxC_mg.kg")) |>
+    subset(measurement \%in\% c("totalC_\%", "poxC_mg.kg") &
+    !texture == "Loamy Sand") |>
     ggplot(aes(x = value, fill = texture, color = texture)) +
     labs(
       title = "washi_theme() + washi_scale()",
@@ -106,7 +105,6 @@ suppressWarnings({
     washi_scale() +
     xlab(NULL) +
     guides(col = guide_legend(nrow = 2, byrow = TRUE))
-})
 }
 \seealso{
 Other ggplot2 functions: 
