@@ -9,11 +9,16 @@ test_that("washi_scale() works", {
   )
 
   # Check that a ggplot object is returned
+  data <- data.frame(a = 1:5,
+                     b = 6:10,
+                     c = c(rep("a", 2), rep("b", 2), "c"))
+
+  # Check that a ggplot object is returned
   plot <- ggplot2::ggplot(
-    iris,
-    ggplot2::aes(Sepal.Width,
-      Sepal.Length,
-      color = Species
+    data,
+    ggplot2::aes(x = a,
+                 y = b,
+                 color = c
     )
   ) +
     ggplot2::geom_point() +
