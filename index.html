@@ -137,8 +137,9 @@
 <span></span>
 <span><span class="co"># 1. Prepare data</span></span>
 <span><span class="va">example_data_long</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">measurement</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"totalC_%"</span>, <span class="st">"poxC_mg.kg"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span><span class="co"># 2. Pipe to ggplot()</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">measurement</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"totalC_%"</span>, <span class="st">"poxC_mg.kg"</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>    <span class="op">!</span><span class="va">texture</span> <span class="op">==</span> <span class="st">"Loamy Sand"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># 2. Pipe to ggplot()</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">value</span>, fill <span class="op">=</span> <span class="va">texture</span>, color <span class="op">=</span> <span class="va">texture</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"washi_theme() + washi_scale()"</span>,</span>
@@ -146,20 +147,13 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html" class="external-link">geom_density</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="va">.</span> <span class="op">~</span> <span class="va">measurement</span>, scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span> <span class="op">+</span></span>
-<span><span class="co"># 3. Add washi_theme() with argument to change legend position</span></span>
+<span>  <span class="co"># 3. Add washi_theme() with argument to change legend position</span></span>
 <span>  <span class="fu"><a href="reference/washi_theme.html">washi_theme</a></span><span class="op">(</span>legend_position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span> <span class="op">+</span></span>
-<span><span class="co"># 4. Add washi_scale()</span></span>
+<span>  <span class="co"># 4. Add washi_scale()</span></span>
 <span>  <span class="fu"><a href="reference/washi_scale.html">washi_scale</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span><span class="co"># 5. Tweak for your specific plot</span></span>
+<span>  <span class="co"># 5. Tweak for your specific plot</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Groups with fewer than two data points have been dropped.</span></span>
-<span><span class="co">#&gt; Groups with fewer than two data points have been dropped.</span></span>
-<span><span class="co">#&gt; Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning</span></span>
-<span><span class="co">#&gt; -Inf</span></span>
-<span></span>
-<span><span class="co">#&gt; Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning</span></span>
-<span><span class="co">#&gt; -Inf</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-1.png" width="100%"></p>
 </div>
 <div class="section level3">
@@ -167,152 +161,14 @@
 </h3>
 <p><code>washi</code> provides a function to create a <code>flextable</code> with WaSHI colors, fonts, and styling.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">example_data_wide</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">example_data_wide</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sampleId"</span>, </span>
 <span>                    <span class="st">"crop"</span>, </span>
 <span>                    <span class="st">"totalN_%"</span>, </span>
 <span>                    <span class="st">"totalC_%"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/washi_flextable.html">washi_flextable</a></span><span class="op">(</span>cols_bold <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<div class="tabwid">
-<style>.cl-e688e0de{}.cl-e67f0794{font-family:'Lato';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-e67f07b2{font-family:'Poppins';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e67f07b3{font-family:'Poppins';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e682983c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e6829850{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e682985a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e682b7c2{width:0.963in;background-color:rgba(2, 59, 44, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b7cc{width:1.68in;background-color:rgba(2, 59, 44, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b7e0{width:0.967in;background-color:rgba(2, 59, 44, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b7ea{width:0.953in;background-color:rgba(2, 59, 44, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b7eb{width:0.963in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b7f4{width:1.68in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b7f5{width:0.967in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b812{width:0.953in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b813{width:0.963in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b814{width:1.68in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b815{width:0.967in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b81c{width:0.953in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b81d{width:0.963in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b81e{width:1.68in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b826{width:0.967in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b827{width:0.953in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b830{width:0.963in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b831{width:1.68in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b83a{width:0.967in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b83b{width:0.953in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b83c{width:0.963in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b844{width:1.68in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b845{width:0.967in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e682b846{width:0.953in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(204, 194, 156, 1.00);border-top: 1pt solid rgba(204, 194, 156, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="table cl-e688e0de">
-<thead><tr style="overflow-wrap:break-word;">
-<th class="cl-e682b7c2">
-<p class="cl-e682983c">
-<span class="cl-e67f0794">sampleId</span>
-</p>
-</th>
-<th class="cl-e682b7cc">
-<p class="cl-e682983c">
-<span class="cl-e67f0794">crop</span>
-</p>
-</th>
-<th class="cl-e682b7e0">
-<p class="cl-e682983c">
-<span class="cl-e67f0794">totalN_%</span>
-</p>
-</th>
-<th class="cl-e682b7ea">
-<p class="cl-e682983c">
-<span class="cl-e67f0794">totalC_%</span>
-</p>
-</th>
-</tr></thead>
-<tbody>
-<tr style="overflow-wrap:break-word;">
-<td class="cl-e682b7eb">
-<p class="cl-e6829850">
-<span class="cl-e67f07b2">D030301</span>
-</p>
-</td>
-<td class="cl-e682b7f4">
-<p class="cl-e6829850">
-<span class="cl-e67f07b3">Wheat</span>
-</p>
-</td>
-<td class="cl-e682b7f5">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">0.08</span>
-</p>
-</td>
-<td class="cl-e682b812">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">0.67</span>
-</p>
-</td>
-</tr>
-<tr style="overflow-wrap:break-word;">
-<td class="cl-e682b813">
-<p class="cl-e6829850">
-<span class="cl-e67f07b2">D030302</span>
-</p>
-</td>
-<td class="cl-e682b814">
-<p class="cl-e6829850">
-<span class="cl-e67f07b3">CRP/Conservation</span>
-</p>
-</td>
-<td class="cl-e682b815">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">0.09</span>
-</p>
-</td>
-<td class="cl-e682b81c">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">0.94</span>
-</p>
-</td>
-</tr>
-<tr style="overflow-wrap:break-word;">
-<td class="cl-e682b81d">
-<p class="cl-e6829850">
-<span class="cl-e67f07b2">D040401</span>
-</p>
-</td>
-<td class="cl-e682b81e">
-<p class="cl-e6829850">
-<span class="cl-e67f07b3">Apple</span>
-</p>
-</td>
-<td class="cl-e682b826">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">0.09</span>
-</p>
-</td>
-<td class="cl-e682b827">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">0.87</span>
-</p>
-</td>
-</tr>
-<tr style="overflow-wrap:break-word;">
-<td class="cl-e682b830">
-<p class="cl-e6829850">
-<span class="cl-e67f07b2">D040402</span>
-</p>
-</td>
-<td class="cl-e682b831">
-<p class="cl-e6829850">
-<span class="cl-e67f07b3">Green Manure</span>
-</p>
-</td>
-<td class="cl-e682b83a">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">0.10</span>
-</p>
-</td>
-<td class="cl-e682b83b">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">1.12</span>
-</p>
-</td>
-</tr>
-<tr style="overflow-wrap:break-word;">
-<td class="cl-e682b83c">
-<p class="cl-e6829850">
-<span class="cl-e67f07b2">D040403</span>
-</p>
-</td>
-<td class="cl-e682b844">
-<p class="cl-e6829850">
-<span class="cl-e67f07b3">Cherry</span>
-</p>
-</td>
-<td class="cl-e682b845">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">0.09</span>
-</p>
-</td>
-<td class="cl-e682b846">
-<p class="cl-e682985a">
-<span class="cl-e67f07b3">0.86</span>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p><img src="reference/figures/README-table-1.png"></p>
 </div>
 </div>
 </div>
