@@ -16,24 +16,22 @@
 #'   or FALSE
 #' @returns A `ScaleContinuous` or `ScaleDiscrete` object that can be
 #'   added to a `ggplot` object.
+#' @family ggplot2
 #' @examples
 #' library(ggplot2)
 #'
-#' # Discrete scale with color aesthetic
-#' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
-#'   geom_point(size = 3.5) +
+#' # Discrete scale
+#' example_data_wide |>
+#'   subset(crop %in% c("Apple", "Cherry", "Potato")) |>
+#'   ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
+#'   geom_point(size = 2.5) +
 #'   theme_minimal() +
-#'   washi_scale("color_blind", aesthetics = "color", alpha = 0.7)
-#'
-#' # Discrete scale with fill aesthetic
-#' ggplot(mtcars, aes(factor(vs), color = factor(cyl))) +
-#'   geom_bar(fill = "white", linewidth = 1.5) +
-#'   theme_minimal() +
-#'   washi_scale("color_blind", aesthetics = "color", reverse = TRUE)
+#'   washi_scale()
 #'
 #' # Continuous scale
-#' ggplot(diamonds) +
-#'   geom_point(aes(x = carat, y = price, color = price)) +
+#' example_data_wide |>
+#'   ggplot(aes(x = `totalC_%`, y = poxC_mg.kg, color = poxC_mg.kg)) +
+#'   geom_point(size = 2.5) +
 #'   theme_minimal() +
 #'   washi_scale("green_gradient", reverse = TRUE, discrete = FALSE)
 #' @export

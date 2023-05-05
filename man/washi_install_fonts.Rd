@@ -9,3 +9,8 @@ washi_install_fonts()
 \description{
 Opens the font files to install on your computer.
 }
+\seealso{
+Other font: 
+\code{\link{washi_register_fonts}()}
+}
+\concept{font}

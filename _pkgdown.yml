@@ -1,4 +1,31 @@
 url: https://wa-department-of-agriculture.github.io/washi/
 template:
   bootstrap: 5
+  theme: a11y-light
+  bslib:
+      bg: "#faf9f6"
+      fg: "black"
+      primary: "#023b2c"
+      light: "#023b2c"
+      success: "#335c67"
+      heading_font: {google: "Lato"}
+      base_font: {google: "Poppins"}
+
+reference:
+- title: "Fonts"
+  contents:
+  - ends_with("fonts")
+
+- title: "Color palettes"
+  contents:
+  - matches("pal")
+
+- title: "Plots"
+  contents:
+  - washi_scale
+  - washi_theme
+
+- title: "Tables"
+  contents:
+  - washi_flextable
 

@@ -2,7 +2,7 @@
 #'
 #' Creates a flextable in WaSHI's style.
 #'
-#' @param data The dataframe for the table.
+#' @param data Dataframe for the table.
 #' @param cols_bold Numeric indices of columns to bold. Defaults to
 #'   `NULL`.
 #' @param header_font_color Hexcode color for header font. Defaults to
@@ -14,9 +14,13 @@
 #'
 #' @returns A flextable formatted in WaSHI's style.
 #' @export
+#' @family table
 #'
 #' @examples
-#' washi_flextable(head(mtcars), cols_bold = 1)
+#' subset(example_data_wide, select = c(
+#'   "sampleId", "county", "crop", "totalN_%", "totalC_%"
+#' )) |>
+#'   washi_flextable(cols_bold = 1)
 washi_flextable <- function(data,
                             cols_bold = NULL,
                             header_font_color = "white",

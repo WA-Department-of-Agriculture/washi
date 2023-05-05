@@ -1,6 +1,8 @@
 #' WaSHI color palettes
 #'
 #' Color palettes are stored in a named list.
+#'
+#' @family color palette
 #' @examples
 #' # List names of available palettes
 #' names(washi_pal)
@@ -124,12 +126,14 @@ washi_pal <- list(
 #' @param n Number of colors in palette.
 #' @param reverse Boolean indicating whether the palette should be
 #'   reversed. Default is FALSE.
+#'
 #' @returns A vector of color hex codes.
-#' @export
+#' @family color palette
 #' @examples
 #' washi_pal_setup("color_blind")
 #'
 #' washi_pal_setup("green_gradient", 12)
+#' @export
 washi_pal_setup <- function(palette = "standard",
                             n,
                             reverse = FALSE) {
@@ -168,13 +172,15 @@ washi_pal_setup <- function(palette = "standard",
 #' Show the colors within a palette in a plot.
 #'
 #' @inheritParams washi_pal_setup
+#' @returns A plot with each color displayed.
+#' @family color palette
+#'
 #' @examples
 #' washi_pal_view("standard")
 #'
 #' washi_pal_view("color_blind")
 #'
 #' washi_pal_view("blue_gradient", 4, reverse = TRUE)
-#' @returns A plot with each color displayed.
 #' @export
 washi_pal_view <- function(palette = "color_blind",
                            n,

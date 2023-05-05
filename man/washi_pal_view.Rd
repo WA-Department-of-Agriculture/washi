@@ -28,3 +28,9 @@ washi_pal_view("color_blind")
 
 washi_pal_view("blue_gradient", 4, reverse = TRUE)
 }
+\seealso{
+Other color palette: 
+\code{\link{washi_pal_setup}()},
+\code{\link{washi_pal}}
+}
+\concept{color palette}

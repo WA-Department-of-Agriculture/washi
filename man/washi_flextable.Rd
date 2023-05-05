@@ -13,7 +13,7 @@ washi_flextable(
 )
 }
 \arguments{
-\item{data}{The dataframe for the table.}
+\item{data}{Dataframe for the table.}
 
 \item{cols_bold}{Numeric indices of columns to bold. Defaults to
 \code{NULL}.}
@@ -34,5 +34,9 @@ A flextable formatted in WaSHI's style.
 Creates a flextable in WaSHI's style.
 }
 \examples{
-washi_flextable(head(mtcars), cols_bold = 1)
+subset(example_data_wide, select = c(
+  "sampleId", "county", "crop", "totalN_\%", "totalC_\%"
+)) |>
+  washi_flextable(cols_bold = 1)
 }
+\concept{table}

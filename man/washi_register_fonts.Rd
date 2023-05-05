@@ -9,3 +9,8 @@ washi_register_fonts()
 \description{
 Register Lato and Poppins fonts in R
 }
+\seealso{
+Other font: 
+\code{\link{washi_install_fonts}()}
+}
+\concept{font}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme.R
 \name{washi_theme}
 \alias{washi_theme}
-\title{Create standard washi plots}
+\title{Create standard WaSHI plots}
 \usage{
 washi_theme(
   font_title = "Lato Black",
@@ -53,7 +53,7 @@ within.}
 \item{facet_space}{Controls how far apart facets are from each
 other.}
 
-\item{color_gridline}{Gridline color. Defaults to washi tan.}
+\item{color_gridline}{Gridline color. Defaults to WaSHI tan.}
 
 \item{gridline_y}{Boolean indicating whether major gridlines are
 displayed for the y axis. Default is TRUE.}
@@ -64,6 +64,9 @@ displayed for the x axis. Default is TRUE.}
 \item{...}{Pass any parameters from theme that are not already
 defined within}
 }
+\value{
+\code{ggplot2} object
+}
 \description{
 Adapted from
 \href{https://github.com/USAID-OHA-SI/glitr/blob/main/R/si_style.R}{glitr::si_style()}.
@@ -71,13 +74,13 @@ All changed defaults from this function can be overriden by another
 call to \code{\link[ggplot2:theme]{ggplot2::theme()}} with the desired changes.
 }
 \examples{
-\dontrun{
 library(extrafont)
 library(ggplot2)
 
-# Single plot
-
-ggplot(iris, aes(Sepal.Length, y = Sepal.Width, color = Species)) +
+# Single geom_point plot
+example_data_wide |>
+  subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
+  ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
   labs(
     title = "washi_theme() + washi_scale()",
     subtitle = "This is a subtitle.",
@@ -87,17 +90,23 @@ ggplot(iris, aes(Sepal.Length, y = Sepal.Width, color = Species)) +
   washi_theme() +
   washi_scale()
 
-# Facet plot
-
-ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
+# Facetted geom_bar plot
+example_data_long |>
+  subset(measurement \%in\% c("totalC_\%", "poxC_mg.kg")) |>
+  ggplot(aes(x = value, fill = texture, color = texture)) +
   labs(
     title = "washi_theme() + washi_scale()",
-    subtitle = "Example of facet_grid().",
-    caption = "This is a caption."
+    subtitle = "Example of facet_grid()."
   ) +
-  geom_histogram(bins = 15) +
-  facet_grid(. ~ Species) +
-  washi_theme(legend_position = "none") +
-  washi_scale()
+  geom_density(alpha = 0.4) +
+  facet_wrap(. ~ measurement, scales = "free") +
+  washi_theme(legend_position = "bottom") +
+  washi_scale() +
+  xlab(NULL) +
+  guides(col = guide_legend(nrow = 2, byrow = TRUE))
 }
+\seealso{
+Other ggplot2: 
+\code{\link{washi_scale}()}
 }
+\concept{ggplot2}

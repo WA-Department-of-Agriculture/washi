@@ -26,4 +26,10 @@ washi_pal[["green_gradient"]]
 # Extract a color from the standard WaSHI palette
 washi_pal[["standard"]][["green"]]
 }
+\seealso{
+Other color palette: 
+\code{\link{washi_pal_setup}()},
+\code{\link{washi_pal_view}()}
+}
+\concept{color palette}
 \keyword{datasets}

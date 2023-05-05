@@ -1,4 +1,4 @@
-#' Create standard washi plots
+#' Create standard WaSHI plots
 #'
 #' Adapted from
 #' \href{https://github.com/USAID-OHA-SI/glitr/blob/main/R/si_style.R}{glitr::si_style()}.
@@ -24,7 +24,7 @@
 #'   "top".
 #' @param facet_space Controls how far apart facets are from each
 #'   other.
-#' @param color_gridline Gridline color. Defaults to washi tan.
+#' @param color_gridline Gridline color. Defaults to WaSHI tan.
 #' @param gridline_x Boolean indicating whether major gridlines are
 #'   displayed for the x axis. Default is TRUE.
 #' @param gridline_y Boolean indicating whether major gridlines are
@@ -32,17 +32,18 @@
 #' @param ... Pass any parameters from theme that are not already
 #'   defined within
 #'
-#' @export
 #' @importFrom ggplot2 %+replace%
+#' @returns `ggplot2` object
+#' @family ggplot2
 #'
 #' @examples
-#' \dontrun{
 #' library(extrafont)
 #' library(ggplot2)
 #'
-#' # Single plot
-#'
-#' ggplot(iris, aes(Sepal.Length, y = Sepal.Width, color = Species)) +
+#' # Single geom_point plot
+#' example_data_wide |>
+#'   subset(crop %in% c("Apple", "Cherry", "Potato")) |>
+#'   ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
 #'   labs(
 #'     title = "washi_theme() + washi_scale()",
 #'     subtitle = "This is a subtitle.",
@@ -52,19 +53,21 @@
 #'   washi_theme() +
 #'   washi_scale()
 #'
-#' # Facet plot
-#'
-#' ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
+#' # Facetted geom_bar plot
+#' example_data_long |>
+#'   subset(measurement %in% c("totalC_%", "poxC_mg.kg")) |>
+#'   ggplot(aes(x = value, fill = texture, color = texture)) +
 #'   labs(
 #'     title = "washi_theme() + washi_scale()",
-#'     subtitle = "Example of facet_grid().",
-#'     caption = "This is a caption."
+#'     subtitle = "Example of facet_grid()."
 #'   ) +
-#'   geom_histogram(bins = 15) +
-#'   facet_grid(. ~ Species) +
-#'   washi_theme(legend_position = "none") +
-#'   washi_scale()
-#' }
+#'   geom_density(alpha = 0.4) +
+#'   facet_wrap(. ~ measurement, scales = "free") +
+#'   washi_theme(legend_position = "bottom") +
+#'   washi_scale() +
+#'   xlab(NULL) +
+#'   guides(col = guide_legend(nrow = 2, byrow = TRUE))
+#' @export
 washi_theme <- function(font_title = "Lato Black",
                         color_title = "#151414",
                         font_subtitle = "Lato Black",
@@ -93,13 +96,17 @@ washi_theme <- function(font_title = "Lato Black",
     ggplot2::element_line(
       color = color_gridline, linewidth = 0.25
     )
-  } else {ggplot2::element_blank()}
+  } else {
+    ggplot2::element_blank()
+  }
 
   gridline_x <- if (isTRUE(gridline_x)) {
     ggplot2::element_line(
       color = color_gridline, linewidth = 0.25
     )
-  } else {ggplot2::element_blank()}
+  } else {
+    ggplot2::element_blank()
+  }
 
   # Set up theme based on theme_minimal
 
@@ -143,6 +150,7 @@ washi_theme <- function(font_title = "Lato Black",
       legend.text.align = 0,
       legend.background = ggplot2::element_blank(),
       legend.margin = ggplot2::margin(t = 5, r = 5, b = 5, l = 5),
+      legend.spacing = ggplot2::unit(2, "cm"),
       legend.key = ggplot2::element_blank(),
       legend.title = ggplot2::element_text(
         family = font_plot,

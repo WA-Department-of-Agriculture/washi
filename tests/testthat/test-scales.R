@@ -32,4 +32,8 @@ test_that("washi_scale() works", {
     washi_scale(discrete = "a"),
     "`discrete` must be `TRUE` or `FALSE`."
   )
+
+  # Check a snapshot
+  vdiffr::expect_doppelganger(title = "washi_scale",
+                              fig = plot)
 })
