@@ -5,14 +5,10 @@
 \title{Create standard WaSHI plots}
 \usage{
 washi_theme(
-  font_title = "Lato Black",
-  color_title = "#151414",
-  font_subtitle = "Lato Black",
-  color_subtitle = "#151414",
-  font_caption = "Poppins",
-  color_caption = "#151414",
-  font_plot = "Poppins",
-  color_plot_text = "#151414",
+  font_header = "Lato Black",
+  color_header = "#151414",
+  font_body = "Lato Black",
+  color_body = "#151414",
   text_scale = 1,
   legend_position = "top",
   facet_space = 2,
@@ -23,24 +19,16 @@ washi_theme(
 )
 }
 \arguments{
-\item{font_title}{Font family for title. Defaults to "Lato Black".}
+\item{font_header}{Font family for title and subtitle. Defaults to
+"Lato Black".}
 
-\item{color_title}{Font color for title. Defaults to almost black.}
+\item{color_header}{Font color for title and subtitle. Defaults to
+almost black.}
 
-\item{font_subtitle}{Font family for subtitle. Defaults to "Lato
-Black".}
+\item{font_body}{Font family for all other text Defaults to
+"Poppins".}
 
-\item{color_subtitle}{Font color for title. Defaults to almost
-black.}
-
-\item{font_caption}{Font family for caption. Defaults to "Poppins".}
-
-\item{color_caption}{Font color for title. Defaults to almost
-black.}
-
-\item{font_plot}{Font family for plot text. Defaults to "Poppins".}
-
-\item{color_plot_text}{Font color for title. Defaults to almost
+\item{color_body}{Font color for all other text Defaults to almost
 black.}
 
 \item{text_scale}{Scalar that will grow/shrink all text defined
@@ -77,34 +65,40 @@ call to \code{\link[ggplot2:theme]{ggplot2::theme()}} with the desired changes.
 library(extrafont)
 library(ggplot2)
 
-  # Single geom_point plot
-  example_data_wide |>
-    subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
-    ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
-    labs(
-      title = "washi_theme() + washi_scale()",
-      subtitle = "This is a subtitle.",
-      caption = "This is a caption."
-    ) +
-    geom_point(size = 2.5) +
-    washi_theme() +
-    washi_scale()
+# NOTE: These examples do not use Poppins or Lato in order to pass
+# automated checks on computers without these fonts installed.
 
-  # Facetted geom_bar plot
-  example_data_long |>
-    subset(measurement \%in\% c("totalC_\%", "poxC_mg.kg") &
+# Single geom_point plot
+example_data_wide |>
+  subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
+  ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
+  labs(
+    title = "washi_theme() + washi_scale()",
+    subtitle = "This is a subtitle.",
+    caption = "This is a caption."
+  ) +
+  geom_point(size = 2.5) +
+  washi_theme(font_header = "sans", font_body = "sans") +
+  washi_scale()
+
+# Facetted geom_bar plot
+example_data_long |>
+  subset(measurement \%in\% c("totalC_\%", "poxC_mg.kg") &
     !texture == "Loamy Sand") |>
-    ggplot(aes(x = value, fill = texture, color = texture)) +
-    labs(
-      title = "washi_theme() + washi_scale()",
-      subtitle = "Example of facet_grid()."
-    ) +
-    geom_density(alpha = 0.4) +
-    facet_wrap(. ~ measurement, scales = "free") +
-    washi_theme(legend_position = "bottom") +
-    washi_scale() +
-    xlab(NULL) +
-    guides(col = guide_legend(nrow = 2, byrow = TRUE))
+  ggplot(aes(x = value, fill = texture, color = texture)) +
+  labs(
+    title = "washi_theme() + washi_scale()",
+    subtitle = "Example of facet_wrap()."
+  ) +
+  geom_density(alpha = 0.4) +
+  facet_wrap(. ~ measurement, scales = "free") +
+  washi_theme(
+    legend_position = "bottom",
+    font_header = "sans", font_body = "sans"
+  ) +
+  washi_scale() +
+  xlab(NULL) +
+  guides(col = guide_legend(nrow = 2, byrow = TRUE))
 }
 \seealso{
 Other ggplot2 functions: 

@@ -120,7 +120,7 @@ example_data_long |>
   ggplot(aes(x = value, fill = texture, color = texture)) +
   labs(
     title = "washi_theme() + washi_scale()",
-    subtitle = "Example of facet_grid()."
+    subtitle = "Example of facet_wrap()."
   ) +
   geom_density(alpha = 0.4) +
   facet_wrap(. ~ measurement, scales = "free") +
@@ -150,4 +150,4 @@ ft <- example_data_wide |>
   washi_flextable(cols_bold = 1)
 ```
 
-![](man/figures/README-table-1.png)
+<img src="man/figures/README-table-1.png" width="458" />

@@ -5,17 +5,13 @@
 #' All changed defaults from this function can be overriden by another
 #' call to [ggplot2::theme()] with the desired changes.
 #'
-#' @param font_title Font family for title. Defaults to "Lato Black".
-#' @param color_title Font color for title. Defaults to almost black.
-#' @param font_subtitle Font family for subtitle. Defaults to "Lato
-#'   Black".
-#' @param color_subtitle Font color for title. Defaults to almost
-#'   black.
-#' @param font_plot Font family for plot text. Defaults to "Poppins".
-#' @param color_plot_text Font color for title. Defaults to almost
-#'   black.
-#' @param font_caption Font family for caption. Defaults to "Poppins".
-#' @param color_caption Font color for title. Defaults to almost
+#' @param font_header Font family for title and subtitle. Defaults to
+#'   "Lato Black".
+#' @param color_header Font color for title and subtitle. Defaults to
+#'   almost black.
+#' @param font_body Font family for all other text Defaults to
+#'   "Poppins".
+#' @param color_body Font color for all other text Defaults to almost
 #'   black.
 #' @param text_scale Scalar that will grow/shrink all text defined
 #'   within.
@@ -40,43 +36,45 @@
 #' library(extrafont)
 #' library(ggplot2)
 #'
-#'   # Single geom_point plot
-#'   example_data_wide |>
-#'     subset(crop %in% c("Apple", "Cherry", "Potato")) |>
-#'     ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
-#'     labs(
-#'       title = "washi_theme() + washi_scale()",
-#'       subtitle = "This is a subtitle.",
-#'       caption = "This is a caption."
-#'     ) +
-#'     geom_point(size = 2.5) +
-#'     washi_theme() +
-#'     washi_scale()
+#' # NOTE: These examples do not use Poppins or Lato in order to pass
+#' # automated checks on computers without these fonts installed.
 #'
-#'   # Facetted geom_bar plot
-#'   example_data_long |>
-#'     subset(measurement %in% c("totalC_%", "poxC_mg.kg") &
+#' # Single geom_point plot
+#' example_data_wide |>
+#'   subset(crop %in% c("Apple", "Cherry", "Potato")) |>
+#'   ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
+#'   labs(
+#'     title = "washi_theme() + washi_scale()",
+#'     subtitle = "This is a subtitle.",
+#'     caption = "This is a caption."
+#'   ) +
+#'   geom_point(size = 2.5) +
+#'   washi_theme(font_header = "sans", font_body = "sans") +
+#'   washi_scale()
+#'
+#' # Facetted geom_bar plot
+#' example_data_long |>
+#'   subset(measurement %in% c("totalC_%", "poxC_mg.kg") &
 #'     !texture == "Loamy Sand") |>
-#'     ggplot(aes(x = value, fill = texture, color = texture)) +
-#'     labs(
-#'       title = "washi_theme() + washi_scale()",
-#'       subtitle = "Example of facet_grid()."
-#'     ) +
-#'     geom_density(alpha = 0.4) +
-#'     facet_wrap(. ~ measurement, scales = "free") +
-#'     washi_theme(legend_position = "bottom") +
-#'     washi_scale() +
-#'     xlab(NULL) +
-#'     guides(col = guide_legend(nrow = 2, byrow = TRUE))
+#'   ggplot(aes(x = value, fill = texture, color = texture)) +
+#'   labs(
+#'     title = "washi_theme() + washi_scale()",
+#'     subtitle = "Example of facet_wrap()."
+#'   ) +
+#'   geom_density(alpha = 0.4) +
+#'   facet_wrap(. ~ measurement, scales = "free") +
+#'   washi_theme(
+#'     legend_position = "bottom",
+#'     font_header = "sans", font_body = "sans"
+#'   ) +
+#'   washi_scale() +
+#'   xlab(NULL) +
+#'   guides(col = guide_legend(nrow = 2, byrow = TRUE))
 #' @export
-washi_theme <- function(font_title = "Lato Black",
-                        color_title = "#151414",
-                        font_subtitle = "Lato Black",
-                        color_subtitle = "#151414",
-                        font_caption = "Poppins",
-                        color_caption = "#151414",
-                        font_plot = "Poppins",
-                        color_plot_text = "#151414",
+washi_theme <- function(font_header = "Lato Black",
+                        color_header = "#151414",
+                        font_body = "Lato Black",
+                        color_body = "#151414",
                         text_scale = 1,
                         legend_position = "top",
                         facet_space = 2,
@@ -115,10 +113,10 @@ washi_theme <- function(font_title = "Lato Black",
 
     ggplot2::theme(
       plot.title = ggplot2::element_text(
-        family = font_title,
+        family = font_header,
         size = 14 * text_scale,
         face = "bold",
-        color = color_title,
+        color = color_header,
         margin = ggplot2::margin(b = 6),
         hjust = 0
       ),
@@ -127,17 +125,17 @@ washi_theme <- function(font_title = "Lato Black",
       # chart's subtitle, as well as setting a margin between the
       # title and the subtitle
       plot.subtitle = ggplot2::element_text(
-        family = font_subtitle,
+        family = font_header,
         size = 12 * text_scale,
         face = "bold",
-        color = color_title,
+        color = color_header,
         margin = ggplot2::margin(b = 15),
         hjust = 0
       ),
       plot.caption = ggplot2::element_text(
-        family = font_caption,
+        family = font_body,
         size = 9 * text_scale,
-        color = color_caption,
+        color = color_body,
         margin = ggplot2::margin(t = 6),
         hjust = 1, vjust = 1
       ),
@@ -154,29 +152,29 @@ washi_theme <- function(font_title = "Lato Black",
       legend.spacing = ggplot2::unit(2, "cm"),
       legend.key = ggplot2::element_blank(),
       legend.title = ggplot2::element_text(
-        family = font_plot,
+        family = font_body,
         size = 11 * text_scale,
         face = "bold",
-        color = color_plot_text
+        color = color_body
       ),
       legend.text = ggplot2::element_text(
-        family = font_plot,
+        family = font_body,
         size = 11 * text_scale,
-        color = color_plot_text
+        color = color_body
       ),
 
       # Axis format
       axis.text = ggplot2::element_text(
-        family = font_plot,
+        family = font_body,
         size = 10 * text_scale,
-        color = color_plot_text
+        color = color_body
       ),
       axis.ticks = ggplot2::element_blank(),
       axis.line = ggplot2::element_blank(),
       axis.title = ggplot2::element_text(
-        family = font_plot,
+        family = font_body,
         size = 10 * text_scale,
-        color = color_plot_text
+        color = color_body
       ),
       axis.title.y = ggplot2::element_text(
         angle = 90,
@@ -204,7 +202,7 @@ washi_theme <- function(font_title = "Lato Black",
       # Facet strip background and text
       strip.background = ggplot2::element_blank(),
       strip.text = ggplot2::element_text(
-        family = font_plot,
+        family = font_body,
         face = "bold",
         size = 11 * text_scale,
         hjust = 0.5,
