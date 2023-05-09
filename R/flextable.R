@@ -62,6 +62,10 @@ washi_flextable <- function(data,
       pr_c = header_cell,
       part = "header"
     ) |>
+    flextable::style(
+      pr_c = officer::fp_cell(background.color = "white"),
+      part = "body"
+    ) |>
     # Horizontal borders
     flextable::hline(
       border = officer::fp_border(color = border_color),

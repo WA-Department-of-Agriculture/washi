@@ -21,6 +21,9 @@ Health Initiative (WaSHI) branding. This package is to be used only by
 direct collaborators within WaSHI, though you are welcome to adapt the
 package to suit your own organization’s branding.
 
+**Package documentation:
+<https://wa-department-of-agriculture.github.io/washi/>.**
+
 ## Installation
 
 You can install the development version of washi from
@@ -44,14 +47,25 @@ washi_install_fonts()
 ```
 
 This function will open a window with the font files for you to install,
-and provides instructions for installation. Once they are installed, you
-will need to register them for use in R with:
+and provides instructions for installation. Alternatively, you can
+download and install the font families directly from Google:
+
+- Poppins: <https://fonts.google.com/specimen/Poppins?query=poppins>
+- Lato: <https://fonts.google.com/specimen/Lato?query=lato>
+
+<img src="man/figures/README-googlefonts.png"
+style="outline-style: solid;     outline-width: thin;     outline-color: gray;" />
+
+Once they are installed, you will need to register them for use in R
+with:
 
 ``` r
 washi_register_fonts()
 ```
 
 Then restart your R session (Ctrl + Shift + F10).
+
+Load the {extrafont} package in each session with `library(extrafont)`.
 
 ## Palettes
 
@@ -71,7 +85,7 @@ Individual colors can be accessed with
 washi_pal_view("standard")
 ```
 
-<img src="man/figures/README-standard-1.png" width="100%" />
+<img src="man/figures/README-standard-1.png" width="80%" />
 
 #### WaSHI colors adjusted to be color-blind safe
 
@@ -79,7 +93,7 @@ washi_pal_view("standard")
 washi_pal_view("color_blind")
 ```
 
-<img src="man/figures/README-color_blind-1.png" width="100%" />
+<img src="man/figures/README-color_blind-1.png" width="80%" />
 
 #### Color gradients
 
@@ -89,9 +103,9 @@ Available in green, blue, red, and gold.
 washi_pal_view("green_gradient", n = 4, reverse = TRUE)
 ```
 
-<img src="man/figures/README-green_gradient-1.png" width="100%" />
+<img src="man/figures/README-green_gradient-1.png" width="80%" />
 
-### Data
+## Data
 
 `washi` provides an example dataset, which was subset and anonymized
 from the [WaSHI State of the Soils
@@ -100,12 +114,12 @@ This dataset comes in a long, tidy form with one measurement per row;
 and in a wide form with one sample per row. Its purpose is to provide an
 example soils dataset to use in plots and tables.
 
-### Plots
+## Plots
 
 `washi` provides `ggplot2` scale and theme functions that apply WaSHI
 colors, fonts, and styling.
 
-**Example workflow:**
+### **Example workflow:**
 
 ``` r
 library(extrafont) # Package must be loaded to use WaSHI fonts
@@ -119,8 +133,8 @@ example_data_long |>
   # 2. Pipe to ggplot()
   ggplot(aes(x = value, fill = texture, color = texture)) +
   labs(
-    title = "washi_theme() + washi_scale()",
-    subtitle = "Example of facet_wrap()."
+    title = "Distribution of POXC (mg/kg) and Total C (%)",
+    subtitle = "Example with geom_density() and facet_wrap()."
   ) +
   geom_density(alpha = 0.4) +
   facet_wrap(. ~ measurement, scales = "free") +
@@ -133,7 +147,57 @@ example_data_long |>
   guides(col = guide_legend(nrow = 2, byrow = TRUE))
 ```
 
-<img src="man/figures/README-plot-1.png" width="100%" />
+<img src="man/figures/README-plot-workflow-1.png" width="80%" />
+
+### **Scatter plot**
+
+``` r
+# Single geom_point plot
+example_data_wide |>
+  subset(crop %in% c("Apple", "Cherry", "Potato")) |>
+  ggplot(aes(x = pH, y = Mn_mg.kg, color = crop)) +
+  labs(
+    title = "Scatter plot of pH and Mn (mg/kg)",
+    subtitle = "Example with geom_point().",
+    caption = "This is a caption."
+  ) +
+  geom_point(size = 2.5) +
+  washi_theme() +
+  washi_scale()
+```
+
+<img src="man/figures/README-scatter-plot-1.png" width="80%" />
+
+### Barplot
+
+``` r
+example_data_wide |>
+  ggplot(aes(x = forcats::fct_rev(forcats::fct_infreq(crop)))) +
+  geom_bar(fill = washi_pal[["standard"]][["blue"]]) +
+  geom_text(
+    aes(
+      y = after_stat(count),
+      label = after_stat(count)
+    ),
+    stat = "count",
+    hjust = 2.5,
+    color = "white"
+  ) +
+  # Flip coordinates to accomodate long crop names
+  coord_flip() +
+  labs(
+    title = "Number of samples in each crop",
+    subtitle = "Example plot with geom_bar() without gridlines.",
+    y = NULL,
+    x = NULL
+  ) +
+  # Turn gridlines off
+  washi_theme(gridline_y = FALSE, gridline_x = FALSE) +
+  # Remove x-axis
+  theme(axis.text.x = element_blank())
+```
+
+<img src="man/figures/README-barplot-1.png" width="80%" />
 
 ### Tables
 
@@ -142,11 +206,13 @@ fonts, and styling.
 
 ``` r
 ft <- example_data_wide |>
-  head(5) |> 
-  subset(select = c("sampleId", 
-                    "crop", 
-                    "totalN_%", 
-                    "totalC_%")) |>
+  head(5) |>
+  subset(select = c(
+    "sampleId",
+    "crop",
+    "totalN_%",
+    "totalC_%"
+  )) |>
   washi_flextable(cols_bold = 1)
 ```
 

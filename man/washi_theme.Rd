@@ -71,24 +71,53 @@ library(ggplot2)
 # Single geom_point plot
 example_data_wide |>
   subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
-  ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
+  ggplot(aes(x = pH, y = Mn_mg.kg, color = crop)) +
   labs(
-    title = "washi_theme() + washi_scale()",
-    subtitle = "This is a subtitle.",
+    title = "Scatter plot of pH and Mn (mg/kg)",
+    subtitle = "Example with geom_point().",
     caption = "This is a caption."
   ) +
   geom_point(size = 2.5) +
   washi_theme(font_header = "sans", font_body = "sans") +
   washi_scale()
 
-# Facetted geom_bar plot
+# Bar plot
+example_data_wide |>
+  ggplot(aes(x = forcats::fct_rev(forcats::fct_infreq(crop)))) +
+  geom_bar(fill = washi_pal[["standard"]][["blue"]]) +
+  geom_text(
+    aes(
+      y = after_stat(count),
+      label = after_stat(count)
+    ),
+    stat = "count",
+    hjust = 2.5,
+    color = "white"
+  ) +
+  # Flip coordinates to accomodate long crop names
+  coord_flip() +
+  labs(
+    title = "Number of samples in each crop",
+    subtitle = "Example plot with geom_bar() without gridlines.",
+    y = NULL,
+    x = NULL
+  ) +
+  # Turn gridlines off
+  washi_theme(
+    gridline_y = FALSE, gridline_x = FALSE,
+    font_header = "sans", font_body = "sans"
+  ) +
+  # Remove x-axis
+  theme(axis.text.x = element_blank())
+
+# Facetted geom_density plots
 example_data_long |>
   subset(measurement \%in\% c("totalC_\%", "poxC_mg.kg") &
     !texture == "Loamy Sand") |>
   ggplot(aes(x = value, fill = texture, color = texture)) +
   labs(
-    title = "washi_theme() + washi_scale()",
-    subtitle = "Example of facet_wrap()."
+    title = "Distribution of POXC (mg/kg) and Total C (\%)",
+    subtitle = "Example with geom_density() and facet_wrap()."
   ) +
   geom_density(alpha = 0.4) +
   facet_wrap(. ~ measurement, scales = "free") +
