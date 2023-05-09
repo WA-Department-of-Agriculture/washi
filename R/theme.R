@@ -118,6 +118,38 @@ washi_theme <- function(font_header = "Lato Black",
     ))
   }
 
+  # Errors if font_header is invalid
+  if (!font_header %in% extrafont::fonts() &&
+    !font_header %in% c("sans", "serif", "mono")) {
+    cli::cli_abort("Can't find {font_header} in font database.")
+  }
+
+  # Errors if font_body is invalid
+  if (!font_body %in% extrafont::fonts() &&
+    !font_body %in% c("sans", "serif", "mono")) {
+    cli::cli_abort("Can't find {font_body} in font database.")
+  }
+
+  # Errors for invalid legend_position argument
+  if (length(legend_position) > 1) {
+    cli::cli_abort("`legend_position` must have length 1.")
+  }
+
+  legend_choices <- c("top", "bottom", "left", "right", "none")
+
+  if (!legend_position %in% legend_choices) {
+    cli::cli_abort("`legend_position` must be one of {dQuote(legend_choices)}.")
+  }
+
+  # Errors if invalid gridline argument
+  if (!is.logical(gridline_y)) {
+    cli::cli_abort("`gridline_y` must be TRUE or FALSE.")
+  }
+
+  if (!is.logical(gridline_x)) {
+    cli::cli_abort("`gridline_x` must be TRUE or FALSE.")
+  }
+
   # Set up gridline variables
 
   gridline_y <- if (isTRUE(gridline_y)) {

@@ -40,16 +40,17 @@ library(washi)
 
 ### Install and register fonts
 
-`washi` uses Poppins and Lato fonts. You can install these on your
-computer by running:
+`washi` uses Poppins and Lato fonts through the
+[{extrafont}](https://github.com/wch/extrafont) package. You can install
+these on your computer by running:
 
 ``` r
 washi_install_fonts()
 ```
 
-This function will open a window with the font files for you to install,
-and provides instructions for installation. Alternatively, you can
-download and install the font families directly from Google:
+This function opens a window with the font files and provides
+instructions for installation. Alternatively, you can download and
+install the font families directly from Google:
 
 - Poppins: <https://fonts.google.com/specimen/Poppins?query=poppins>
 - Lato: <https://fonts.google.com/specimen/Lato?query=lato>
@@ -66,7 +67,12 @@ washi_register_fonts()
 
 Then restart your R session (Ctrl + Shift + F10).
 
+### Make fonts available
+
 Load the {extrafont} package in each session with `library(extrafont)`.
+If you have any issues, please see the [{extrafont}
+documentation](https://github.com/wch/extrafont) for detailed
+requirements and instructions.
 
 ## Palettes
 
