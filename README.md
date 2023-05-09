@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# washi
+# washi <a href="https://wa-department-of-agriculture.github.io/washi/"><img src="man/figures/logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
 
@@ -21,8 +21,9 @@ Health Initiative (WaSHI) branding. This package is to be used only by
 direct collaborators within WaSHI, though you are welcome to adapt the
 package to suit your own organization’s branding.
 
-**Package documentation:
-<https://wa-department-of-agriculture.github.io/washi/>.**
+Learn what functions are available and how to use them on the [function
+reference
+webpage](https://wa-department-of-agriculture.github.io/washi/reference/index.html).
 
 ## Installation
 
