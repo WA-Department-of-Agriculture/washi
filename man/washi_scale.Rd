@@ -48,7 +48,7 @@ library(ggplot2)
 # Discrete scale
 example_data_wide |>
   subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
-  ggplot(aes(x = pH, y = EC_mmhos.cm, color = crop)) +
+  ggplot(aes(x = pH, y = Mn_mg.kg, color = crop)) +
   geom_point(size = 2.5) +
   theme_minimal() +
   washi_scale()
