@@ -86,10 +86,19 @@
 <p><code>washi</code> uses Poppins and Lato fonts. You can install these on your computer by running:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_install_fonts.html">washi_install_fonts</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>This function will open a window with the font files for you to install, and provides instructions for installation. Once they are installed, you will need to register them for use in R with:</p>
+<p>This function will open a window with the font files for you to install, and provides instructions for installation. Alternatively, you can download and install the font families directly from Google:</p>
+<ul>
+<li>Poppins: <a href="https://fonts.google.com/specimen/Poppins?query=poppins" class="external-link uri">https://fonts.google.com/specimen/Poppins?query=poppins</a>
+</li>
+<li>Lato: <a href="https://fonts.google.com/specimen/Lato?query=lato" class="external-link uri">https://fonts.google.com/specimen/Lato?query=lato</a>
+</li>
+</ul>
+<p><img src="reference/figures/README-googlefonts.png" style="outline-style: solid;     outline-width: thin;     outline-color: gray;"></p>
+<p>Once they are installed, you will need to register them for use in R with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_register_fonts.html">washi_register_fonts</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Then restart your R session (Ctrl + Shift + F10).</p>
+<p>Load the {extrafont} package in each session with <code><a href="https://github.com/wch/extrafont" class="external-link">library(extrafont)</a></code>.</p>
 </div>
 </div>
 <div class="section level2">
@@ -103,14 +112,14 @@
 <p>Individual colors can be accessed with <code>washi_pal[["standard"]][["green"]]</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"standard"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-standard-1.png" width="100%"></p>
+<p><img src="reference/figures/README-standard-1.png" width="80%"></p>
 </div>
 <div class="section level4">
 <h4 id="washi-colors-adjusted-to-be-color-blind-safe">WaSHI colors adjusted to be color-blind safe<a class="anchor" aria-label="anchor" href="#washi-colors-adjusted-to-be-color-blind-safe"></a>
 </h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"color_blind"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-color_blind-1.png" width="100%"></p>
+<p><img src="reference/figures/README-color_blind-1.png" width="80%"></p>
 </div>
 <div class="section level4">
 <h4 id="color-gradients">Color gradients<a class="anchor" aria-label="anchor" href="#color-gradients"></a>
@@ -118,18 +127,22 @@
 <p>Available in green, blue, red, and gold.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"green_gradient"</span>, n <span class="op">=</span> <span class="fl">4</span>, reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-green_gradient-1.png" width="100%"></p>
+<p><img src="reference/figures/README-green_gradient-1.png" width="80%"></p>
 </div>
-<div class="section level3">
-<h3 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
-</h3>
+</div>
+<div class="section level2">
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h2>
 <p><code>washi</code> provides an example dataset, which was subset and anonymized from the <a href="https://agr.wa.gov/departments/land-and-water/natural-resources/soil-health/state-of-the-soils" class="external-link">WaSHI State of the Soils Assessment</a>. This dataset comes in a long, tidy form with one measurement per row; and in a wide form with one sample per row. Its purpose is to provide an example soils dataset to use in plots and tables.</p>
 </div>
-<div class="section level3">
-<h3 id="plots">Plots<a class="anchor" aria-label="anchor" href="#plots"></a>
-</h3>
+<div class="section level2">
+<h2 id="plots">Plots<a class="anchor" aria-label="anchor" href="#plots"></a>
+</h2>
 <p><code>washi</code> provides <code>ggplot2</code> scale and theme functions that apply WaSHI colors, fonts, and styling.</p>
-<p><strong>Example workflow:</strong></p>
+<div class="section level3">
+<h3 id="example-workflow">
+<strong>Example workflow:</strong><a class="anchor" aria-label="anchor" href="#example-workflow"></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/wch/extrafont" class="external-link">extrafont</a></span><span class="op">)</span> <span class="co"># Package must be loaded to use WaSHI fonts</span></span>
 <span><span class="co">#&gt; Registering fonts with R</span></span>
@@ -142,8 +155,8 @@
 <span>  <span class="co"># 2. Pipe to ggplot()</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">value</span>, fill <span class="op">=</span> <span class="va">texture</span>, color <span class="op">=</span> <span class="va">texture</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"washi_theme() + washi_scale()"</span>,</span>
-<span>    subtitle <span class="op">=</span> <span class="st">"Example of facet_wrap()."</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Distribution of POXC (mg/kg) and Total C (%)"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Example with geom_density() and facet_wrap()."</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html" class="external-link">geom_density</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="va">.</span> <span class="op">~</span> <span class="va">measurement</span>, scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -154,19 +167,70 @@
 <span>  <span class="co"># 5. Tweak for your specific plot</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot-1.png" width="100%"></p>
+<p><img src="reference/figures/README-plot-workflow-1.png" width="80%"></p>
+</div>
+<div class="section level3">
+<h3 id="scatter-plot">
+<strong>Scatter plot</strong><a class="anchor" aria-label="anchor" href="#scatter-plot"></a>
+</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Single geom_point plot</span></span>
+<span><span class="va">example_data_wide</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">crop</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Apple"</span>, <span class="st">"Cherry"</span>, <span class="st">"Potato"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pH</span>, y <span class="op">=</span> <span class="va">EC_mmhos.cm</span>, color <span class="op">=</span> <span class="va">crop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Scatter plot of pH and EC (mmhos/cm)"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Example with geom_point()."</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"This is a caption."</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="reference/washi_theme.html">washi_theme</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="reference/washi_scale.html">washi_scale</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-scatter-plot-1.png" width="80%"></p>
+</div>
+<div class="section level3">
+<h3 id="barplot">Barplot<a class="anchor" aria-label="anchor" href="#barplot"></a>
+</h3>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">example_data_wide</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_rev.html" class="external-link">fct_rev</a></span><span class="op">(</span><span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html" class="external-link">fct_infreq</a></span><span class="op">(</span><span class="va">crop</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">washi_pal</span><span class="op">[[</span><span class="st">"standard"</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="st">"blue"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
+<span>      y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html" class="external-link">after_stat</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span>,</span>
+<span>      label <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html" class="external-link">after_stat</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    stat <span class="op">=</span> <span class="st">"count"</span>,</span>
+<span>    hjust <span class="op">=</span> <span class="fl">2.5</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"white"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Flip coordinates to accomodate long crop names</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Number of samples in each crop"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Example plot with geom_bar() without gridlines."</span>,</span>
+<span>    y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    x <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Turn gridlines off</span></span>
+<span>  <span class="fu"><a href="reference/washi_theme.html">washi_theme</a></span><span class="op">(</span>gridline_y <span class="op">=</span> <span class="cn">FALSE</span>, gridline_x <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># Remove x-axis</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-barplot-1.png" width="80%"></p>
 </div>
 <div class="section level3">
 <h3 id="tables">Tables<a class="anchor" aria-label="anchor" href="#tables"></a>
 </h3>
 <p><code>washi</code> provides a function to create a <code>flextable</code> with WaSHI colors, fonts, and styling.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">example_data_wide</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sampleId"</span>, </span>
-<span>                    <span class="st">"crop"</span>, </span>
-<span>                    <span class="st">"totalN_%"</span>, </span>
-<span>                    <span class="st">"totalC_%"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"sampleId"</span>,</span>
+<span>    <span class="st">"crop"</span>,</span>
+<span>    <span class="st">"totalN_%"</span>,</span>
+<span>    <span class="st">"totalC_%"</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/washi_flextable.html">washi_flextable</a></span><span class="op">(</span>cols_bold <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-table-1.png" width="458"></p>
 </div>
