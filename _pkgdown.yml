@@ -14,7 +14,8 @@ template:
 reference:
 - title: "Fonts"
   contents:
-  - ends_with("fonts")
+  - washi_install_fonts
+  - washi_import_fonts
 
 - title: "Color palettes"
   contents:

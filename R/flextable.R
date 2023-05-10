@@ -13,7 +13,6 @@
 #'   to WaSHI tan.
 #'
 #' @returns A flextable formatted in WaSHI's style.
-#' @export
 #' @family table functions
 #'
 #' @examples
@@ -21,6 +20,7 @@
 #'   "sampleId", "county", "crop", "totalN_%", "totalC_%"
 #' )) |>
 #'   washi_flextable(cols_bold = 1)
+#' @export
 washi_flextable <- function(data,
                             cols_bold = NULL,
                             header_font_color = "white",
@@ -28,7 +28,7 @@ washi_flextable <- function(data,
                             border_color = washi_pal[["standard"]][["tan"]]) {
   if (!isNamespaceLoaded("extrafont")) {
     cli::cli_warn(c(
-      "The extrafont package is not loaded.",
+      "The {.pkg extrafont} package is not loaded.",
       "Call `library(extrafont)`."
     ))
   }

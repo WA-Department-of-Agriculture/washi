@@ -4,12 +4,12 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r options, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "80%",
+  out.width = "100%",
   dpi = 400
 )
 ```
@@ -18,17 +18,18 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
-<a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."/></a> [![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml) [![Codecov test coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
-
+[![CRAN status](https://www.r-pkg.org/badges/version/washi)](https://CRAN.R-project.org/package=washi)  [![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml) [![Codecov test coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
 <!-- badges: end -->
 
 Inspired by other branding R packages such as [`glitr`](https://github.com/USAID-OHA-SI/glitr), [`ratlas`](https://github.com/atlas-aai/ratlas), and [`nmfspalette`](https://github.com/nmfs-fish-tools/nmfspalette), `washi` provides color palettes and themes consistent with Washington Soil Health Initiative (WaSHI) branding. This package is to be used only by direct collaborators within WaSHI, though you are welcome to adapt the package to suit your own organization's branding.
 
 Learn what functions are available and how to use them on the [function reference webpage](https://wa-department-of-agriculture.github.io/washi/reference/index.html).
 
+For help within RStudio, place your cursor within the function name then press `F1` to open the help page or `F4` to open the source code.
+
 ## Installation
 
-You can install the development version of washi from [GitHub](https://github.com/) with:
+You can install the development version of `washi` from [GitHub](https://github.com/) with:
 
 ```{r install}
 # install.packages("devtools")
@@ -38,7 +39,7 @@ library(washi)
 
 ## Requirements
 
-### Install and register fonts
+### Install and import fonts
 
 `washi` uses Poppins and Lato fonts through the [{extrafont}](https://github.com/wch/extrafont) package. You can install these on your computer by running:
 
@@ -51,19 +52,27 @@ This function opens a window with the font files and provides instructions for i
 -   Poppins: <https://fonts.google.com/specimen/Poppins?query=poppins>
 -   Lato: <https://fonts.google.com/specimen/Lato?query=lato>
 
-![](man/figures/README-googlefonts.png){style="outline-style: solid;     outline-width: thin;     outline-color: gray;"}
+![](man/figures/README-googlefonts.png){style="outline-style: solid;     outline-width: thin; outline-color: gray;"}
 
-Once they are installed, you will need to register them for use in R with:
+Once the fonts are installed, import them into the extrafont database:
 
-```{r register-fonts, eval=FALSE}
-washi_register_fonts()
+```{r import-fonts, eval=FALSE}
+washi_import_fonts()
 ```
 
-Then restart your R session (Ctrl + Shift + F10).
+This function only needs to be run once per computer. Then restart your R session (Ctrl + Shift + F10). 
 
 ### Make fonts available
 
-Load the {extrafont} package in each session with `library(extrafont)`. If you have any issues, please see the [{extrafont} documentation](https://github.com/wch/extrafont) for detailed requirements and instructions.
+Every session, you must register the fonts by attaching the {extrafont} package with `library(extrafont)`. 
+
+To check that fonts are available, run:
+```{r check-fonts}
+fonts <- c("Lato", "Poppins")
+all(fonts %in% extrafont::fonts())
+```
+
+If you have any issues, please see the [{extrafont} documentation](https://github.com/wch/extrafont) for detailed requirements and instructions.
 
 ## Palettes
 
@@ -71,7 +80,7 @@ To list the names of all available palettes, call `names(washi_pal)`. To view a 
 
 #### All WaSHI standard colors
 
-This palette is primarily to access individual brand colors for fonts, table headers, graphic backgrounds, etc. These colors are not accessible to those who may have color blindness.
+This palette is primarily to access individual brand colors for fonts, table headers, graphic backgrounds, etc. These colors, when used together in plots, are not accessible to those who may have color blindness.
 
 Individual colors can be accessed with `washi_pal[["standard"]][["green"]]`.
 
@@ -79,7 +88,7 @@ Individual colors can be accessed with `washi_pal[["standard"]][["green"]]`.
 washi_pal_view("standard")
 ```
 
-#### WaSHI colors adjusted to be color-blind safe
+#### WaSHI colors adjusted to be more color-blind friendly
 
 ```{r color_blind, fig.height = 2.5}
 washi_pal_view("color_blind")
@@ -101,7 +110,7 @@ washi_pal_view("green_gradient", n = 4, reverse = TRUE)
 
 `washi` provides `ggplot2` scale and theme functions that apply WaSHI colors, fonts, and styling.
 
-### **Example workflow:**
+### Example workflow:
 
 ```{r plot-workflow}
 library(extrafont) # Package must be loaded to use WaSHI fonts
@@ -128,7 +137,7 @@ example_data_long |>
   guides(col = guide_legend(nrow = 2, byrow = TRUE))
 ```
 
-### **Scatter plot**
+### Scatter plot
 
 ```{r scatter-plot}
 # Single geom_point plot

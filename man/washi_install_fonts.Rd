@@ -6,11 +6,14 @@
 \usage{
 washi_install_fonts()
 }
+\value{
+Opens a directory containing font files.
+}
 \description{
 Opens the font files to install on your computer.
 }
 \seealso{
 Other font functions: 
-\code{\link{washi_register_fonts}()}
+\code{\link{washi_import_fonts}()}
 }
 \concept{font functions}
