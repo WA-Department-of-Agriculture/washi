@@ -33,11 +33,11 @@
 #' @family ggplot2 functions
 #'
 #' @examples
-#' library(extrafont)
-#' library(ggplot2)
-#'
 #' # NOTE: These examples do not use Poppins or Lato in order to pass
 #' # automated checks on computers without these fonts installed.
+#'
+#' library(extrafont)
+#' library(ggplot2)
 #'
 #' # Single geom_point plot
 #' example_data_wide |>
@@ -113,7 +113,7 @@ washi_theme <- function(font_header = "Lato Black",
                         ...) {
   if (!isNamespaceLoaded("extrafont")) {
     cli::cli_warn(c(
-      "The extrafont package is not loaded.",
+      "The {.pkg extrafont} package is not loaded.",
       "Call `library(extrafont)`."
     ))
   }

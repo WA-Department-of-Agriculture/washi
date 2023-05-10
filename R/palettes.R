@@ -2,12 +2,14 @@
 #'
 #' Color palettes are stored in a named list.
 #'
+#' @returns List of available `washi` color palettes
 #' @family color palette functions
 #' @examples
 #' # List names of available palettes
 #' names(washi_pal)
 #'
-#' # Get hex codes from a palette using dollar `$name` or double bracket
+#' # Get hex codes from a palette using dollar `$name` or
+#' # double bracket
 #' # `[["name"]]` operators for extracting list elements
 #' washi_pal$standard
 #'

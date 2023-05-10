@@ -5,11 +5,11 @@
 
 <!-- badges: start -->
 
-<a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."/></a>
+[![CRAN
+status](https://www.r-pkg.org/badges/version/washi)](https://CRAN.R-project.org/package=washi)
 [![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
-
 <!-- badges: end -->
 
 Inspired by other branding R packages such as
@@ -25,9 +25,12 @@ Learn what functions are available and how to use them on the [function
 reference
 webpage](https://wa-department-of-agriculture.github.io/washi/reference/index.html).
 
+For help within RStudio, place your cursor within the function name then
+press `F1` to open the help page or `F4` to open the source code.
+
 ## Installation
 
-You can install the development version of washi from
+You can install the development version of `washi` from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -65,7 +68,8 @@ with:
 washi_register_fonts()
 ```
 
-Then restart your R session (Ctrl + Shift + F10).
+Then restart your R session (Ctrl + Shift + F10). This function only
+needs to be run once.
 
 ### Make fonts available
 
@@ -82,8 +86,9 @@ view a palette, use the `washi_pal_view()` function.
 #### All WaSHI standard colors
 
 This palette is primarily to access individual brand colors for fonts,
-table headers, graphic backgrounds, etc. These colors are not accessible
-to those who may have color blindness.
+table headers, graphic backgrounds, etc. These colors, when used
+together in plots, are not accessible to those who may have color
+blindness.
 
 Individual colors can be accessed with
 `washi_pal[["standard"]][["green"]]`.
@@ -92,15 +97,15 @@ Individual colors can be accessed with
 washi_pal_view("standard")
 ```
 
-<img src="man/figures/README-standard-1.png" width="80%" />
+<img src="man/figures/README-standard-1.png" width="100%" />
 
-#### WaSHI colors adjusted to be color-blind safe
+#### WaSHI colors adjusted to be more color-blind friendly
 
 ``` r
 washi_pal_view("color_blind")
 ```
 
-<img src="man/figures/README-color_blind-1.png" width="80%" />
+<img src="man/figures/README-color_blind-1.png" width="100%" />
 
 #### Color gradients
 
@@ -110,7 +115,7 @@ Available in green, blue, red, and gold.
 washi_pal_view("green_gradient", n = 4, reverse = TRUE)
 ```
 
-<img src="man/figures/README-green_gradient-1.png" width="80%" />
+<img src="man/figures/README-green_gradient-1.png" width="100%" />
 
 ## Data
 
@@ -126,7 +131,7 @@ example soils dataset to use in plots and tables.
 `washi` provides `ggplot2` scale and theme functions that apply WaSHI
 colors, fonts, and styling.
 
-### **Example workflow:**
+### Example workflow:
 
 ``` r
 library(extrafont) # Package must be loaded to use WaSHI fonts
@@ -154,9 +159,9 @@ example_data_long |>
   guides(col = guide_legend(nrow = 2, byrow = TRUE))
 ```
 
-<img src="man/figures/README-plot-workflow-1.png" width="80%" />
+<img src="man/figures/README-plot-workflow-1.png" width="100%" />
 
-### **Scatter plot**
+### Scatter plot
 
 ``` r
 # Single geom_point plot
@@ -173,7 +178,7 @@ example_data_wide |>
   washi_scale()
 ```
 
-<img src="man/figures/README-scatter-plot-1.png" width="80%" />
+<img src="man/figures/README-scatter-plot-1.png" width="100%" />
 
 ### Barplot
 
@@ -204,7 +209,7 @@ example_data_wide |>
   theme(axis.text.x = element_blank())
 ```
 
-<img src="man/figures/README-barplot-1.png" width="80%" />
+<img src="man/figures/README-barplot-1.png" width="100%" />
 
 ### Tables
 

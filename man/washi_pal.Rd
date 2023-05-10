@@ -10,6 +10,9 @@ An object of class \code{list} of length 11.
 \usage{
 washi_pal
 }
+\value{
+List of available \code{washi} color palettes
+}
 \description{
 Color palettes are stored in a named list.
 }
@@ -17,7 +20,8 @@ Color palettes are stored in a named list.
 # List names of available palettes
 names(washi_pal)
 
-# Get hex codes from a palette using dollar `$name` or double bracket
+# Get hex codes from a palette using dollar `$name` or
+# double bracket
 # `[["name"]]` operators for extracting list elements
 washi_pal$standard
 

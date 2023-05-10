@@ -1,4 +1,8 @@
 test_that("washi_theme() works", {
+
+  skip_on_ci()
+  skip_on_cran()
+
   data <- data.frame(a = 1:5,
                      b = 6:10,
                      c = c(rep("a", 2), rep("b", 2), "c"))
@@ -22,7 +26,6 @@ test_that("washi_theme() works", {
   expect_equal(length(theme$panel.grid.major.y), 0)
 
   # Check a snapshot
-  skip_on_ci()
   vdiffr::expect_doppelganger(title = "washi_theme",
                               fig = plot)
 

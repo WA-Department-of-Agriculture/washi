@@ -1,6 +1,8 @@
 #' Install Lato and Poppins fonts on your system
 #'
 #' Opens the font files to install on your computer.
+#'
+#' @returns Opens a directory containing font files.
 #' @family font functions
 #' @export
 washi_install_fonts <- function() {
@@ -34,8 +36,11 @@ washi_install_fonts <- function() {
 
 #' Register Lato and Poppins fonts in R
 #'
-# Uses extrafont and grDevices to register fonts so they may be used
-# in R plots and tables.
+#' Uses `extrafont` and `grDevices` to register fonts so they may be
+#' used in R plots and tables. This function only needs to be run
+#' once. Though `library(extrafont)` must be called in each session.
+#'
+#' @returns Registers Lato and Poppins for use in R.
 #'
 #' @family font functions
 #' @export

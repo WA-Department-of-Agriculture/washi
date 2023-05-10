@@ -6,6 +6,9 @@
 \usage{
 washi_install_fonts()
 }
+\value{
+Opens a directory containing font files.
+}
 \description{
 Opens the font files to install on your computer.
 }

@@ -62,11 +62,11 @@ All changed defaults from this function can be overriden by another
 call to \code{\link[ggplot2:theme]{ggplot2::theme()}} with the desired changes.
 }
 \examples{
-library(extrafont)
-library(ggplot2)
-
 # NOTE: These examples do not use Poppins or Lato in order to pass
 # automated checks on computers without these fonts installed.
+
+library(extrafont)
+library(ggplot2)
 
 # Single geom_point plot
 example_data_wide |>

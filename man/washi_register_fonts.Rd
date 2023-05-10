@@ -6,8 +6,13 @@
 \usage{
 washi_register_fonts()
 }
+\value{
+Registers Lato and Poppins for use in R.
+}
 \description{
-Register Lato and Poppins fonts in R
+Uses \code{extrafont} and \code{grDevices} to register fonts so they may be
+used in R plots and tables. This function only needs to be run
+once. Though \code{library(extrafont)} must be called in each session.
 }
 \seealso{
 Other font functions: 
