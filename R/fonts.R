@@ -5,7 +5,6 @@
 #' @returns Opens a directory containing font files.
 #' @family font functions
 #' @export
-# nocov start
 washi_install_fonts <- function() {
   # Get directory of font files
   font_dir <- system.file("fonts", package = "washi")
@@ -80,4 +79,3 @@ washi_import_fonts <- function() {
     )
   }
 }
-# nocov end
