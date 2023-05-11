@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2023-05-10T23:09Z
+last_built: 2023-05-11T01:03Z
 urls:
   reference: https://wa-department-of-agriculture.github.io/washi/reference
   article: https://wa-department-of-agriculture.github.io/washi/articles
