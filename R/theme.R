@@ -53,6 +53,7 @@
 #'   washi_scale()
 #'
 #' # Bar plot
+#' if (requireNamespace("forcats")) {
 #' example_data_wide |>
 #'   ggplot(aes(x = forcats::fct_rev(forcats::fct_infreq(crop)))) +
 #'   geom_bar(fill = washi_pal[["standard"]][["blue"]]) +
@@ -80,6 +81,7 @@
 #'   ) +
 #'   # Remove x-axis
 #'   theme(axis.text.x = element_blank())
+#'   }
 #'
 #' # Facetted geom_density plots
 #' example_data_long |>
@@ -111,7 +113,7 @@ washi_theme <- function(font_header = "Lato Black",
                         gridline_y = TRUE,
                         gridline_x = TRUE,
                         ...) {
-  if (!isNamespaceLoaded("extrafont")) {
+  if (interactive() & !isNamespaceLoaded("extrafont")) {
     cli::cli_warn(c(
       "The {.pkg extrafont} package is not loaded.",
       "Call `library(extrafont)`."

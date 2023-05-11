@@ -39,8 +39,8 @@ washi_install_fonts <- function() {
 #'
 #' Uses `extrafont` and `grDevices` to import fonts into the
 #' `extrafontdb` database so they may be used in R plots and tables.
-#' This function only needs to be run once. Though
-#' `library(extrafont)` must be called in each session.
+#' This function should only need to be run once. Though `library(extrafont)`
+#' must be called in each session.
 #'
 #' @returns Imports Lato and Poppins for use in R.
 #'
@@ -53,21 +53,12 @@ washi_import_fonts <- function() {
 
   # If fonts not yet imported, import them
   if (!all(fonts %in% extrafont::fonts())) {
-    if (.Platform$OS.type == "windows") {
-      grDevices::windowsFonts(
-        `Lato` = grDevices::windowsFont("Lato")
-      )
-      grDevices::windowsFonts(
-        `Poppins` = grDevices::windowsFont("Poppins")
-      )
-    } else {
-      suppressWarnings(suppressMessages(
-        extrafont::font_import(pattern = "Lato", prompt = FALSE)
-      ))
-      suppressWarnings(suppressMessages(
-        extrafont::font_import(pattern = "Poppins", prompt = FALSE)
-      ))
-    }
+    suppressWarnings(suppressMessages(
+      extrafont::font_import(pattern = "Lato", prompt = FALSE)
+    ))
+    suppressWarnings(suppressMessages(
+      extrafont::font_import(pattern = "Poppins", prompt = FALSE)
+    ))
     # Inform success
     cli::cli_bullets(c(
       "v" = "Lato and Poppins fonts successfully imported!",

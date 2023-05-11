@@ -26,7 +26,7 @@ washi_flextable <- function(data,
                             header_font_color = "white",
                             header_bg_color = washi_pal[["standard"]][["green"]],
                             border_color = washi_pal[["standard"]][["tan"]]) {
-  if (!isNamespaceLoaded("extrafont")) {
+  if (interactive() & !isNamespaceLoaded("extrafont")) {
     cli::cli_warn(c(
       "The {.pkg extrafont} package is not loaded.",
       "Call `library(extrafont)`."

@@ -12,8 +12,8 @@ Imports Lato and Poppins for use in R.
 \description{
 Uses \code{extrafont} and \code{grDevices} to import fonts into the
 \code{extrafontdb} database so they may be used in R plots and tables.
-This function only needs to be run once. Though
-\code{library(extrafont)} must be called in each session.
+This function should only need to be run once. Though \code{library(extrafont)}
+must be called in each session.
 }
 \seealso{
 Other font functions: 

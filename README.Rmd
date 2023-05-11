@@ -60,7 +60,7 @@ Once the fonts are installed, import them into the extrafont database:
 washi_import_fonts()
 ```
 
-This function only needs to be run once per computer. Then restart your R session (Ctrl + Shift + F10). 
+This function should only need to be run once. Then restart your R session (Ctrl + Shift + F10). 
 
 ### Make fonts available
 

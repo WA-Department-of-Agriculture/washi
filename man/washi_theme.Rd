@@ -82,6 +82,7 @@ example_data_wide |>
   washi_scale()
 
 # Bar plot
+if (requireNamespace("forcats")) {
 example_data_wide |>
   ggplot(aes(x = forcats::fct_rev(forcats::fct_infreq(crop)))) +
   geom_bar(fill = washi_pal[["standard"]][["blue"]]) +
@@ -109,6 +110,7 @@ example_data_wide |>
   ) +
   # Remove x-axis
   theme(axis.text.x = element_blank())
+  }
 
 # Facetted geom_density plots
 example_data_long |>
