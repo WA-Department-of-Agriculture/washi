@@ -2,7 +2,7 @@
 #'
 #' Adapted from
 #' \href{https://github.com/USAID-OHA-SI/glitr/blob/main/R/si_style.R}{glitr::si_style()}.
-#' All changed defaults from this function can be overriden by another
+#' All changed defaults from this function can be overridden by another
 #' call to [ggplot2::theme()] with the desired changes.
 #'
 #' @param font_header Font family for title and subtitle. Defaults to
