@@ -3,26 +3,19 @@ Title: Washington Soil Health Initiative Branding
 Version: 0.1.0
 Authors@R: c(
     person("Jadey", "Ryan", , "jryan@agr.wa.gov", role = c("aut", "cre")),
-    person("Molly", "Mcilquham", , "molly.mcilquham@wsu.edu", role = c("aut")),
-    person("Dani", "Gelardi", , "dgelardi@agr.wa.gov", role = c("aut")),
+    person("Molly", "Mcilquham", , "molly.mcilquham@wsu.edu", role = "aut"),
+    person("Dani", "Gelardi", , "dgelardi@agr.wa.gov", role = "aut"),
     person("Washington State Department of Agriculture", role = c("cph", "fnd"))
   )
-Description: Create plots and tables in a consistent style with  
-  WaSHI (Washington Soil Health Initiative) branding. Use `washi` 
-  to easily style your `ggplot2` plots and `flextable` tables.
+Description: Create plots and tables in a consistent style with WaSHI
+    (Washington Soil Health Initiative) branding. Use 'washi' to easily
+    style your 'ggplot2' plots and 'flextable' tables.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
 URL: https://github.com/WA-Department-of-Agriculture/washi,
     https://wa-department-of-agriculture.github.io/washi/
 BugReports: https://github.com/WA-Department-of-Agriculture/washi/issues/
-Suggests: 
-    covr,
-    forcats,
-    testthat (>= 3.0.0),
-    vdiffr
-Config/testthat/edition: 3
+Depends: 
+    R (>= 3.5)
 Imports: 
     cli,
     extrafont,
@@ -32,6 +25,13 @@ Imports:
     grDevices,
     officer,
     scales
-Depends: 
-    R (>= 3.5)
+Suggests: 
+    covr,
+    forcats,
+    testthat (>= 3.0.0),
+    vdiffr
+Config/testthat/edition: 3
+Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
