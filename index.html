@@ -83,20 +83,15 @@
 
 <p>Inspired by other branding R packages such as <a href="https://github.com/USAID-OHA-SI/glitr" class="external-link"><code>glitr</code></a>, <a href="https://github.com/atlas-aai/ratlas" class="external-link"><code>ratlas</code></a>, and <a href="https://github.com/nmfs-fish-tools/nmfspalette" class="external-link"><code>nmfspalette</code></a>, <code>washi</code> provides color palettes and themes consistent with Washington Soil Health Initiative (WaSHI) branding. This package is to be used only by direct collaborators within WaSHI, though you are welcome to adapt the package to suit your own organization’s branding.</p>
 <p>Learn what functions are available and how to use them on the <a href="https://wa-department-of-agriculture.github.io/washi/reference/index.html">function reference webpage</a>.</p>
-<p>For help within RStudio, place your cursor within the function name then press <code>&lt;F1&gt;</code> to open the help page or <code>&lt;F2&gt;</code> to open the function source code.</p>
+<p>For help within RStudio, place your cursor within the function name then press <code>F1</code> to open the help page or <code>F4</code> to open the source code.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Install <code>washi</code> from CRAN with:</p>
+<p>You can install the development version of <code>washi</code> from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"washi"</span><span class="op">)</span></span></code></pre></div>
-<p>Or, you can install the development version of <code>washi</code> from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"WA-Department-of-Agriculture/washi"</span><span class="op">)</span></span></code></pre></div>
-<p>Then load the package with:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/WA-Department-of-Agriculture/washi" class="external-link">"washi"</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># devtools::install_github("WA-Department-of-Agriculture/washi")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/WA-Department-of-Agriculture/washi" class="external-link">washi</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="requirements">Requirements<a class="anchor" aria-label="anchor" href="#requirements"></a>
@@ -105,7 +100,7 @@
 <h3 id="install-and-import-fonts">Install and import fonts<a class="anchor" aria-label="anchor" href="#install-and-import-fonts"></a>
 </h3>
 <p><code>washi</code> uses Poppins and Lato fonts through the <a href="https://github.com/wch/extrafont" class="external-link">{extrafont}</a> package. You can install these on your computer by running:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_install_fonts.html">washi_install_fonts</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This function opens a window with the font files and provides instructions for installation. Alternatively, you can download and install the font families directly from Google:</p>
 <ul>
@@ -116,7 +111,7 @@
 </ul>
 <p><img src="reference/figures/README-googlefonts.png" style="outline-style: solid;     outline-width: thin; outline-color: gray;"></p>
 <p>Once the fonts are installed, import them into the extrafont database:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_import_fonts.html">washi_import_fonts</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This function should only need to be run once. Then restart your R session (Ctrl + Shift + F10).</p>
 </div>
@@ -125,7 +120,7 @@
 </h3>
 <p>Every session, you must register the fonts by attaching the {extrafont} package with <code><a href="https://github.com/wch/extrafont" class="external-link">library(extrafont)</a></code>.</p>
 <p>To check that fonts are available, run:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fonts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Lato"</span>, <span class="st">"Poppins"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="va">fonts</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu">extrafont</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/extrafont/man/fonts.html" class="external-link">fonts</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
@@ -141,14 +136,14 @@
 </h4>
 <p>This palette is primarily to access individual brand colors for fonts, table headers, graphic backgrounds, etc. These colors, when used together in plots, are not accessible to those who may have color blindness.</p>
 <p>Individual colors can be accessed with <code>washi_pal[["standard"]][["green"]]</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"standard"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-standard-1.png" width="100%"></p>
 </div>
 <div class="section level4">
 <h4 id="washi-colors-adjusted-to-be-more-color-blind-friendly">WaSHI colors adjusted to be more color-blind friendly<a class="anchor" aria-label="anchor" href="#washi-colors-adjusted-to-be-more-color-blind-friendly"></a>
 </h4>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"color_blind"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-color_blind-1.png" width="100%"></p>
 </div>
@@ -156,7 +151,7 @@
 <h4 id="color-gradients">Color gradients<a class="anchor" aria-label="anchor" href="#color-gradients"></a>
 </h4>
 <p>Available in green, blue, red, and gold.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/washi_pal_view.html">washi_pal_view</a></span><span class="op">(</span><span class="st">"green_gradient"</span>, n <span class="op">=</span> <span class="fl">4</span>, reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-green_gradient-1.png" width="100%"></p>
 </div>
@@ -173,7 +168,7 @@
 <div class="section level3">
 <h3 id="example-workflow">Example workflow:<a class="anchor" aria-label="anchor" href="#example-workflow"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/wch/extrafont" class="external-link">extrafont</a></span><span class="op">)</span> <span class="co"># Package must be loaded to use WaSHI fonts</span></span>
 <span><span class="co">#&gt; Registering fonts with R</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -202,7 +197,7 @@
 <div class="section level3">
 <h3 id="scatter-plot">Scatter plot<a class="anchor" aria-label="anchor" href="#scatter-plot"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Single geom_point plot</span></span>
 <span><span class="va">example_data_wide</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">crop</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Apple"</span>, <span class="st">"Cherry"</span>, <span class="st">"Potato"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -220,7 +215,7 @@
 <div class="section level3">
 <h3 id="barplot">Barplot<a class="anchor" aria-label="anchor" href="#barplot"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">example_data_wide</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_rev.html" class="external-link">fct_rev</a></span><span class="op">(</span><span class="fu">forcats</span><span class="fu">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html" class="external-link">fct_infreq</a></span><span class="op">(</span><span class="va">crop</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">washi_pal</span><span class="op">[[</span><span class="st">"standard"</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="st">"blue"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">+</span></span>
@@ -251,7 +246,7 @@
 <h3 id="tables">Tables<a class="anchor" aria-label="anchor" href="#tables"></a>
 </h3>
 <p><code>washi</code> provides a function to create a <code>flextable</code> with WaSHI colors, fonts, and styling.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ft</span> <span class="op">&lt;-</span> <span class="va">example_data_wide</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
