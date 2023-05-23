@@ -26,17 +26,29 @@ reference
 webpage](https://wa-department-of-agriculture.github.io/washi/reference/index.html).
 
 For help within RStudio, place your cursor within the function name then
-press `F1` to open the help page or `F4` to open the source code.
+press `<F1>` to open the help page or `<F2>` to open the function source
+code.
 
 ## Installation
 
-You can install the development version of `washi` from
+Install `washi` from CRAN with:
+
+``` r
+install.packages("washi")
+```
+
+Or, you can install the development version of `washi` from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-# devtools::install_github("WA-Department-of-Agriculture/washi")
-library(washi)
+devtools::install_github("WA-Department-of-Agriculture/washi")
+```
+
+Then load the package with:
+
+``` r
+library("washi")
 ```
 
 ## Requirements
