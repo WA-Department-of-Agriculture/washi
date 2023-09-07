@@ -1,8 +1,9 @@
 # washi (development version)
 
-* Use {ragg} with {systemfonts} instead of {extrafont}. 
+* Fonts are made available with {ragg} and {systemfonts} instead of {extrafont}. 
 
-* Set default font to "sans" in `washi_flextable()` and `washi_theme()` if provided fonts are not found on the system.
+* In `washi_flextable()` and `washi_theme()`, the default font is set to "sans"
+  if the provided font is not found in `systemfonts::system_fonts()$family`.
 
 # washi 0.1.0
 

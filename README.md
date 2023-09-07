@@ -7,6 +7,8 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/washi)](https://CRAN.R-project.org/package=washi)
+[![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/washi)](https://cranlogs.r-pkg.org/badges/grand-total/washi)
 [![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
@@ -68,10 +70,13 @@ washi_install_fonts()
 #> • Restart RStudio.
 ```
 
-<img src="man/figures/README-install-fonts.png"
-data-fig-alt="Windows folder containing Lato and Poppins .ttf font files selected and a dropdown shows &#39;Install&#39; highlighted." />
+<img src="man/figures/README-install-fonts-windows.png"
+data-fig-alt="Windows folder containing Lato and Poppins .ttf font files selected and a dropdown showing &#39;Install&#39; highlighted." />
 
-To make these fonts available in RStudio, set the Graphics band-end to
+<img src="man/figures/README-install-fonts-mac.png"
+data-fig-alt="Mac OS folder containing Lato and Poppins .ttf font files selected and a dropdown showing &#39;Open With &gt; Font Book&#39; highlighted." />
+
+To make these fonts available in RStudio, set the Graphics backend to
 use `AGG` in the RStudio options dialog box.
 
 <img src="man/figures/README-agg.png"

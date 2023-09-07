@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
-[![CRAN status](https://www.r-pkg.org/badges/version/washi)](https://CRAN.R-project.org/package=washi) [![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml) [![Codecov test coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
+[![CRAN status](https://www.r-pkg.org/badges/version/washi)](https://CRAN.R-project.org/package=washi) [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/washi)](https://cranlogs.r-pkg.org/badges/grand-total/washi) [![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml) [![Codecov test coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
 
 <!-- badges: end -->
 
@@ -59,9 +59,11 @@ library("washi")
 washi_install_fonts()
 ```
 
-![](man/figures/README-install-fonts.png){fig-alt="Windows folder containing Lato and Poppins .ttf font files selected and a dropdown shows 'Install' highlighted."}
+![](man/figures/README-install-fonts-windows.png){fig-alt="Windows folder containing Lato and Poppins .ttf font files selected and a dropdown showing 'Install' highlighted."}
 
-To make these fonts available in RStudio, set the Graphics band-end to use `AGG` in the RStudio options dialog box.
+![](man/figures/README-install-fonts-mac.png){fig-alt="Mac OS folder containing Lato and Poppins .ttf font files selected and a dropdown showing 'Open With > Font Book' highlighted."}
+
+To make these fonts available in RStudio, set the Graphics backend to use `AGG` in the RStudio options dialog box.
 
 ![](man/figures/README-agg.png){fig-alt="RStudio Options dialog box opened on R General with the Graphic tab selected. The Graphics Device Backend is set to 'AGG'."}
 

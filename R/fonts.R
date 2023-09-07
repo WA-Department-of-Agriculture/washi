@@ -29,7 +29,7 @@ washi_install_fonts <- function() {
       "*" = "Double click on the font files to open a dialog box.",
       "*" = "Click {.pkg Install}.",
       "!" = "Or, drag & drop them into your system's font folder or app.",
-      "*" = "(MacOS has {.pkg FontBook}.",
+      "*" = "MacOS has {.pkg FontBook}.",
       "*" = "Restart RStudio."
     ))
   }
