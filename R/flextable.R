@@ -5,6 +5,10 @@
 #' @param data Dataframe for the table.
 #' @param cols_bold Numeric indices of columns to bold. Defaults to
 #'   `NULL`.
+#' @param header_font Font family for header text. Defaults to
+#'   "Lato".
+#' @param body_font Font family for table body text. Defaults to
+#'   "Poppins".
 #' @param header_font_color Hexcode color for header font. Defaults to
 #'   white.
 #' @param header_bg_color Hexcode color for header background.
@@ -16,22 +20,32 @@
 #' @family table functions
 #'
 #' @examples
-#' subset(example_data_wide, select = c(
-#'   "sampleId", "county", "crop", "totalN_%", "totalC_%"
-#' )) |>
+#' subset(
+#'   example_data_wide,
+#'   select = c(
+#'     "sampleId",
+#'     "county",
+#'     "crop",
+#'     "totalN_%",
+#'     "totalC_%"
+#'   )
+#' ) |>
 #'   washi_flextable(cols_bold = 1)
 #' @export
-washi_flextable <- function(data,
-                            cols_bold = NULL,
-                            header_font_color = "white",
-                            header_bg_color = washi_pal[["standard"]][["green"]],
-                            border_color = washi_pal[["standard"]][["tan"]]) {
-  if (interactive() & !isNamespaceLoaded("extrafont")) {
-    cli::cli_warn(c(
-      "The {.pkg extrafont} package is not loaded.",
-      "Call `library(extrafont)`."
-    ))
-  }
+washi_flextable <- function(
+  data,
+  cols_bold = NULL,
+  header_font = "Lato",
+  body_font = "Poppins",
+  header_font_color = "white",
+  header_bg_color = washi_pal[["standard"]][["green"]],
+  border_color = washi_pal[["standard"]][["tan"]]
+    ) {
+  # Change font to "sans" if given font isn't found
+  check_fonts(
+    header_font = header_font,
+    body_font = body_font
+  )
 
   if (is.character(cols_bold)) {
     cli::cli_abort(c(
@@ -44,11 +58,11 @@ washi_flextable <- function(data,
   }
 
   if (!is.character(header_bg_color)) {
-    cli::cli_abort("`header_bg_color` must be character color name or code..")
+    cli::cli_abort("`header_bg_color` must be character color name or code.")
   }
 
-  # Set default font to Poppins
-  flextable::set_flextable_defaults(font.family = "Poppins")
+  # Set default font
+  flextable::set_flextable_defaults(font.family = body_font)
 
   # Set header background
   header_cell <- officer::fp_cell(
@@ -57,7 +71,7 @@ washi_flextable <- function(data,
 
   # Set header text
   header_text <- officer::fp_text(
-    font.family = "Lato",
+    font.family = header_font,
     font.size = 12,
     bold = TRUE,
     color = header_font_color

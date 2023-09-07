@@ -136,9 +136,11 @@ washi_pal <- list(
 #'
 #' washi_pal_setup("green_gradient", 12)
 #' @export
-washi_pal_setup <- function(palette = "standard",
-                            n,
-                            reverse = FALSE) {
+washi_pal_setup <- function(
+  palette = "standard",
+  n,
+  reverse = FALSE
+    ) {
   if (!palette %in% names(washi_pal)) {
     cli::cli_abort(c(
       "There is no palette called `{palette}`.",
@@ -184,18 +186,26 @@ washi_pal_setup <- function(palette = "standard",
 #'
 #' washi_pal_view("blue_gradient", 4, reverse = TRUE)
 #' @export
-washi_pal_view <- function(palette = "color_blind",
-                           n,
-                           reverse = FALSE) {
+washi_pal_view <- function(
+  palette = "color_blind",
+  n,
+  reverse = FALSE
+    ) {
   if (missing(n)) {
     n <- length(washi_pal[[palette]])
   }
   pal <- washi_pal_setup(palette, n, reverse)
 
-  graphics::image(1:n, 1, as.matrix(1:n),
+  graphics::image(
+    1:n,
+    1,
+    as.matrix(1:n),
     col = pal,
-    xlab = paste(palette), ylab = "", xaxt = "n",
-    yaxt = "n", bty = "n"
+    xlab = paste(palette),
+    ylab = "",
+    xaxt = "n",
+    yaxt = "n",
+    bty = "n"
   )
   graphics::box()
 }

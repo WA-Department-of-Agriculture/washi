@@ -20,9 +20,8 @@ washi_install_fonts <- function() {
     cli::cli_bullets(c(
       "i" = "To install the fonts on Windows:",
       "*" = "Select all {.pkg .ttf} files in the newly opened directory.",
-      "*" = "Right-click + {.pkg Install for all users}.",
-      "*" = "If you don't have admin permission, click {.pkg Install}.",
-      "*" = "Run {.fn washi_import_fonts} to make them available in R."
+      "*" = "Right-click + {.pkg Install}.",
+      "*" = "Restart RStudio."
     ))
   } else {
     cli::cli_bullets(c(
@@ -30,43 +29,27 @@ washi_install_fonts <- function() {
       "*" = "Double click on the font files to open a dialog box.",
       "*" = "Click {.pkg Install}.",
       "!" = "Or, drag & drop them into your system's font folder or app.",
-      "*" = "(MacOS has {.pkg FontBook}."
+      "*" = "MacOS has {.pkg FontBook}.",
+      "*" = "Restart RStudio."
     ))
   }
 }
 
-#' Import Lato and Poppins fonts
-#'
-#' Uses `extrafont` and `grDevices` to import fonts into the
-#' `extrafontdb` database so they may be used in R plots and tables.
-#' This function should only need to be run once. Though `library(extrafont)`
-#' must be called in each session.
-#'
-#' @returns Imports Lato and Poppins for use in R.
-#'
-#' @family font functions
-#' @export
-#'
-washi_import_fonts <- function() {
-  # Check if fonts are already imported
-  fonts <- c("Lato", "Poppins")
+#' Check fonts
+#' Change font to "sans" if given font isn't found
+#' @noRd
+check_fonts <- function(header_font, body_font) {
+  fonts <- c(systemfonts::system_fonts()$family, "sans", "serif", "mono")
 
-  # If fonts not yet imported, import them
-  if (!all(fonts %in% extrafont::fonts())) {
-    suppressWarnings(suppressMessages(
-      extrafont::font_import(pattern = "Lato", prompt = FALSE)
-    ))
-    suppressWarnings(suppressMessages(
-      extrafont::font_import(pattern = "Poppins", prompt = FALSE)
-    ))
-    # Inform success
-    cli::cli_bullets(c(
-      "v" = "Lato and Poppins fonts successfully imported!",
-      "i" = "You may need to restart your R session."
-    ))
-  } else {
-    cli::cli_alert_info(
-      "Lato and Poppins fonts have already been imported."
-    )
+  if (!header_font %in% fonts) {
+    header_font <- "sans"
+    cli::cli_inform("Couldn't find {.pkg '{header_font}'}.
+                    Defaulting to {.pkg 'sans'.}")
+  }
+
+  if (!body_font %in% fonts) {
+    body_font <- "sans"
+    cli::cli_inform("Couldn't find {.pkg '{body_font}'}.
+                    Defaulting to {.pkg 'sans'.}")
   }
 }

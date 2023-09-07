@@ -3,12 +3,15 @@
 \name{washi_theme}
 \alias{washi_theme}
 \title{Create standard WaSHI plots}
+\source{
+Adapted from \code{glitr::si_style()}.
+}
 \usage{
 washi_theme(
-  font_header = "Lato Black",
-  color_header = "#151414",
-  font_body = "Lato Black",
-  color_body = "#151414",
+  header_font = "Lato Black",
+  header_color = "#151414",
+  body_font = "Poppins",
+  body_color = "#151414",
   text_scale = 1,
   legend_position = "top",
   facet_space = 2,
@@ -19,16 +22,16 @@ washi_theme(
 )
 }
 \arguments{
-\item{font_header}{Font family for title and subtitle. Defaults to
+\item{header_font}{Font family for title and subtitle. Defaults to
 "Lato Black".}
 
-\item{color_header}{Font color for title and subtitle. Defaults to
+\item{header_color}{Font color for title and subtitle. Defaults to
 almost black.}
 
-\item{font_body}{Font family for all other text Defaults to
+\item{body_font}{Font family for all other text Defaults to
 "Poppins".}
 
-\item{color_body}{Font color for all other text Defaults to almost
+\item{body_color}{Font color for all other text Defaults to almost
 black.}
 
 \item{text_scale}{Scalar that will grow/shrink all text defined
@@ -56,8 +59,6 @@ defined within.}
 \code{ggplot2} object
 }
 \description{
-Adapted from
-\href{https://github.com/USAID-OHA-SI/glitr/blob/main/R/si_style.R}{glitr::si_style()}.
 All changed defaults from this function can be overridden by another
 call to \code{\link[ggplot2:theme]{ggplot2::theme()}} with the desired changes.
 }
@@ -65,7 +66,6 @@ call to \code{\link[ggplot2:theme]{ggplot2::theme()}} with the desired changes.
 # NOTE: These examples do not use Poppins or Lato in order to pass
 # automated checks on computers without these fonts installed.
 
-library(extrafont)
 library(ggplot2)
 
 # Single geom_point plot
@@ -78,39 +78,44 @@ example_data_wide |>
     caption = "This is a caption."
   ) +
   geom_point(size = 2.5) +
-  washi_theme(font_header = "sans", font_body = "sans") +
+  washi_theme(
+    header_font = "sans",
+    body_font = "sans"
+  ) +
   washi_scale()
 
 # Bar plot
 if (requireNamespace("forcats")) {
-example_data_wide |>
-  ggplot(aes(x = forcats::fct_rev(forcats::fct_infreq(crop)))) +
-  geom_bar(fill = washi_pal[["standard"]][["blue"]]) +
-  geom_text(
-    aes(
-      y = after_stat(count),
-      label = after_stat(count)
-    ),
-    stat = "count",
-    hjust = 2.5,
-    color = "white"
-  ) +
-  # Flip coordinates to accomodate long crop names
-  coord_flip() +
-  labs(
-    title = "Number of samples in each crop",
-    subtitle = "Example plot with geom_bar() without gridlines.",
-    y = NULL,
-    x = NULL
-  ) +
-  # Turn gridlines off
-  washi_theme(
-    gridline_y = FALSE, gridline_x = FALSE,
-    font_header = "sans", font_body = "sans"
-  ) +
-  # Remove x-axis
-  theme(axis.text.x = element_blank())
-  }
+  example_data_wide |>
+    ggplot(aes(x = forcats::fct_rev(forcats::fct_infreq(crop)))) +
+    geom_bar(fill = washi_pal[["standard"]][["blue"]]) +
+    geom_text(
+      aes(
+        y = after_stat(count),
+        label = after_stat(count)
+      ),
+      stat = "count",
+      hjust = 2.5,
+      color = "white"
+    ) +
+    # Flip coordinates to accommodate long crop names
+    coord_flip() +
+    labs(
+      title = "Number of samples in each crop",
+      subtitle = "Example plot with geom_bar() without gridlines.",
+      y = NULL,
+      x = NULL
+    ) +
+    # Turn gridlines off
+    washi_theme(
+      gridline_y = FALSE,
+      gridline_x = FALSE,
+      header_font = "sans",
+      body_font = "sans"
+    ) +
+    # Remove x-axis
+    theme(axis.text.x = element_blank())
+}
 
 # Facetted geom_density plots
 example_data_long |>
@@ -125,7 +130,8 @@ example_data_long |>
   facet_wrap(. ~ measurement, scales = "free") +
   washi_theme(
     legend_position = "bottom",
-    font_header = "sans", font_body = "sans"
+    header_font = "sans",
+    body_font = "sans"
   ) +
   washi_scale() +
   xlab(NULL) +
