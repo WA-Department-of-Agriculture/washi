@@ -1,5 +1,9 @@
 # washi (development version)
 
+* Use {ragg} with {systemfonts} instead of {extrafont}. 
+
+* Set default font to "sans" in `washi_flextable()` and `washi_theme()` if provided fonts are not found on the system.
+
 # washi 0.1.0
 
 * Prepare for CRAN submission.

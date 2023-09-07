@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# washi <a href="https://wa-department-of-agriculture.github.io/washi/"><img src="man/figures/logo.png" align="right" height="138" /></a>
+# washi <a href="https://wa-department-of-agriculture.github.io/washi/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
 
@@ -10,16 +10,18 @@ status](https://www.r-pkg.org/badges/version/washi)](https://CRAN.R-project.org/
 [![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
+
 <!-- badges: end -->
 
 Inspired by other branding R packages such as
 [`glitr`](https://github.com/USAID-OHA-SI/glitr),
 [`ratlas`](https://github.com/atlas-aai/ratlas), and
 [`nmfspalette`](https://github.com/nmfs-fish-tools/nmfspalette), `washi`
-provides color palettes and themes consistent with Washington Soil
-Health Initiative (WaSHI) branding. This package is to be used only by
-direct collaborators within WaSHI, though you are welcome to adapt the
-package to suit your own organization’s branding.
+provides color palettes and themes consistent with [Washington Soil
+Health Initiative](https://washingtonsoilhealthinitiative.com/) (WaSHI)
+branding. This package is to be used only by direct collaborators within
+WaSHI, though you are welcome to adapt the package to suit your own
+organization’s branding.
 
 Learn what functions are available and how to use them on the [function
 reference
@@ -51,53 +53,38 @@ Then load the package with:
 library("washi")
 ```
 
-## Requirements
+## Fonts
 
-### Install and import fonts
-
-`washi` uses Poppins and Lato fonts through the
-[{extrafont}](https://github.com/wch/extrafont) package. You can install
-these on your computer by running:
+`washi` uses Poppins and Lato fonts through the `ragg` and `systemfonts`
+packages. You can install these fonts on your computer with:
 
 ``` r
+# install.packages("ragg")
+# install.packages("systemfonts")
 washi_install_fonts()
+#> ℹ To install the fonts on Windows:
+#> • Select all .ttf files in the newly opened directory.
+#> • Right-click + Install.
+#> • Restart RStudio.
 ```
 
-This function opens a window with the font files and provides
-instructions for installation. Alternatively, you can download and
-install the font families directly from Google:
+<img src="man/figures/README-install-fonts.png"
+data-fig-alt="Windows folder containing Lato and Poppins .ttf font files selected and a dropdown shows &#39;Install&#39; highlighted." />
 
-- Poppins: <https://fonts.google.com/specimen/Poppins?query=poppins>
-- Lato: <https://fonts.google.com/specimen/Lato?query=lato>
+To make these fonts available in RStudio, set the Graphics band-end to
+use `AGG` in the RStudio options dialog box.
 
-<img src="man/figures/README-googlefonts.png"
-style="outline-style: solid;     outline-width: thin; outline-color: gray;" />
+<img src="man/figures/README-agg.png"
+data-fig-alt="RStudio Options dialog box opened on R General with the Graphic tab selected. The Graphics Device Backend is set to &#39;AGG&#39;." />
 
-Once the fonts are installed, import them into the extrafont database:
+To make these fonts available when knitting to `RMarkdown` or `Quarto`,
+use the following chunk setting:
 
 ``` r
-washi_import_fonts()
+knitr::opts_chunk$set(dev = "ragg_png")
 ```
 
-This function should only need to be run once. Then restart your R
-session (Ctrl + Shift + F10).
-
-### Make fonts available
-
-Every session, you must register the fonts by attaching the {extrafont}
-package with `library(extrafont)`.
-
-To check that fonts are available, run:
-
-``` r
-fonts <- c("Lato", "Poppins")
-all(fonts %in% extrafont::fonts())
-#> [1] TRUE
-```
-
-If you have any issues, please see the [{extrafont}
-documentation](https://github.com/wch/extrafont) for detailed
-requirements and instructions.
+Learn more about `ragg`: <https://ragg.r-lib.org/index.html>.
 
 ## Palettes
 
@@ -155,8 +142,6 @@ colors, fonts, and styling.
 ### Example workflow:
 
 ``` r
-library(extrafont) # Package must be loaded to use WaSHI fonts
-#> Registering fonts with R
 library(ggplot2)
 
 # 1. Prepare data

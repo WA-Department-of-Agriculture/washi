@@ -15,7 +15,6 @@ reference:
 - title: "Fonts"
   contents:
   - washi_install_fonts
-  - washi_import_fonts
 
 - title: "Color palettes"
   contents:
@@ -29,6 +28,7 @@ reference:
 - title: "Tables"
   contents:
   - washi_flextable
+
 - title: "Example data"
   contents:
   - matches("data")

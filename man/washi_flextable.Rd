@@ -7,6 +7,8 @@
 washi_flextable(
   data,
   cols_bold = NULL,
+  header_font = "Lato",
+  body_font = "Poppins",
   header_font_color = "white",
   header_bg_color = washi_pal[["standard"]][["green"]],
   border_color = washi_pal[["standard"]][["tan"]]
@@ -17,6 +19,12 @@ washi_flextable(
 
 \item{cols_bold}{Numeric indices of columns to bold. Defaults to
 \code{NULL}.}
+
+\item{header_font}{Font family for header text. Defaults to
+"Lato".}
+
+\item{body_font}{Font family for table body text. Defaults to
+"Poppins".}
 
 \item{header_font_color}{Hexcode color for header font. Defaults to
 white.}
@@ -34,9 +42,16 @@ A flextable formatted in WaSHI's style.
 Creates a flextable in WaSHI's style.
 }
 \examples{
-subset(example_data_wide, select = c(
-  "sampleId", "county", "crop", "totalN_\%", "totalC_\%"
-)) |>
+subset(
+  example_data_wide,
+  select = c(
+    "sampleId",
+    "county",
+    "crop",
+    "totalN_\%",
+    "totalC_\%"
+  )
+) |>
   washi_flextable(cols_bold = 1)
 }
 \concept{table functions}

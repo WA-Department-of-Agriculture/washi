@@ -35,12 +35,14 @@
 #'   theme_minimal() +
 #'   washi_scale("green_gradient", reverse = TRUE, discrete = FALSE)
 #' @export
-washi_scale <- function(palette = "color_blind",
-                        aesthetics = c("color", "fill"),
-                        alpha = 1,
-                        reverse = FALSE,
-                        discrete = TRUE,
-                        ...) {
+washi_scale <- function(
+  palette = "color_blind",
+  aesthetics = c("color", "fill"),
+  alpha = 1,
+  reverse = FALSE,
+  discrete = TRUE,
+  ...
+    ) {
   pal <- washi_pal_setup(palette = palette, reverse = reverse)
 
   if (alpha < 0 | alpha > 1) {
