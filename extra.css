@@ -1,0 +1,21 @@
+:root {
+    --bs-link-color: #437a89;
+    --bs-link-hover-color: #36616D
+}
+
+.caption {
+  font-style: italic;
+}
+
+.text-muted {
+    color: #b1afaf !important;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+    background: #faf9f6;
+}
+
+.navbar-dark .navbar-nav .nav-item>.nav-link:hover, .navbar-light .navbar-nav .nav-item>.nav-link:hover {
+    background: rgb(139 206 188 / 20%);
+    color: white;
+}
