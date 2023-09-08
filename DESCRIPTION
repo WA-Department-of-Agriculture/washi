@@ -1,6 +1,6 @@
 Package: washi
 Title: Washington Soil Health Initiative Branding
-Version: 0.2.0
+Version: 0.2.0.9000
 Authors@R: c(
     person("Jadey", "Ryan", , "jryan@agr.wa.gov", role = c("aut", "cre")),
     person("Molly", "McIlquham", , "molly.mcilquham@wsu.edu", role = "aut"),
