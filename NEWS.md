@@ -1,4 +1,4 @@
-# washi (development version)
+# washi 0.2.0
 
 * Fonts are made available with {ragg} and {systemfonts} instead of {extrafont}. 
 
