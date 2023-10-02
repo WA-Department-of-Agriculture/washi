@@ -89,7 +89,7 @@ use the following chunk setting:
 knitr::opts_chunk$set(dev = "ragg_png")
 ```
 
-Learn more about `ragg`: <https://ragg.r-lib.org/index.html>.
+Learn more about `ragg` at <https://ragg.r-lib.org/index.html> and custom fonts at <https://yjunechoe.github.io/posts/2021-06-24-setting-up-and-debugging-custom-fonts/>.
 
 ## Palettes
 
