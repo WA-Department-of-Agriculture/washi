@@ -33,6 +33,12 @@ For help within RStudio, place your cursor within the function name then
 press `<F1>` to open the help page or `<F2>` to open the function source
 code.
 
+## Video Walkthrough
+
+<p>
+<a href="https://www.loom.com/share/8de49c836754433695b6e1da503cf8fd?sid=c86a6413-5309-4ac5-a6ec-9601061acd7f" class="external-link" target="_blank"><img src="man/figures/README-loom.png" data-fig-alt="Screenshot of video walkthrough of `washi` R package."></a>
+</p>
+
 ## Installation
 
 Install `washi` from CRAN with:
@@ -89,7 +95,10 @@ use the following chunk setting:
 knitr::opts_chunk$set(dev = "ragg_png")
 ```
 
-Learn more about `ragg` at <https://ragg.r-lib.org/index.html> and custom fonts at <https://yjunechoe.github.io/posts/2021-06-24-setting-up-and-debugging-custom-fonts/>.
+Learn more about `ragg` in the [package
+documentation](https://ragg.r-lib.org/index.html) and custom fonts from
+[June Choe’s blog
+post](https://yjunechoe.github.io/posts/2021-06-24-setting-up-and-debugging-custom-fonts).
 
 ## Palettes
 
