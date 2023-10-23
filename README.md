@@ -9,6 +9,10 @@
 status](https://www.r-pkg.org/badges/version/washi)](https://CRAN.R-project.org/package=washi)
 [![CRAN
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/washi)](https://cranlogs.r-pkg.org/badges/grand-total/washi)
+[![:name status
+badge](https://wa-department-of-agriculture.r-universe.dev/badges/:name)](https://wa-department-of-agriculture.r-universe.dev/)
+[![washi status
+badge](https://wa-department-of-agriculture.r-universe.dev/badges/washi)](https://wa-department-of-agriculture.r-universe.dev/washi)
 [![R-CMD-check](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WA-Department-of-Agriculture/washi/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/graph/badge.svg)](https://app.codecov.io/gh/WA-Department-of-Agriculture/washi?branch=main)
@@ -47,12 +51,15 @@ Install `washi` from CRAN with:
 install.packages("washi")
 ```
 
-Or, you can install the development version of `washi` from
-[GitHub](https://github.com/) with:
+Or, you can install the development version of `washi` from our
+[r-universe](https://wa-department-of-agriculture.r-universe.dev/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("WA-Department-of-Agriculture/washi")
+install.packages('washi', 
+                 repos = c(
+                   'https://wa-department-of-agriculture.r-universe.dev',
+                   'https://cloud.r-project.org')
+                 )
 ```
 
 Then load the package with:
