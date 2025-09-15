@@ -3,13 +3,18 @@ template:
   bootstrap: 5
   theme: a11y-light
   bslib:
-      bg: "#faf9f6"
-      fg: "black"
-      primary: "#023b2c"
-      light: "#023b2c"
-      success: "#335c67"
-      heading_font: {google: "Lato"}
-      base_font: {google: "Poppins"}
+    bg: '#faf9f6'
+    fg: black
+    primary: '#023b2c'
+    light: '#023b2c'
+    success: '#335c67'
+    heading_font:
+      google: Lato
+    base_font:
+      google: Poppins
+
+navbar:
+  type: dark
 
 reference:
 - title: "Fonts"
