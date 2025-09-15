@@ -30,7 +30,7 @@ washi_pal_view("blue_gradient", 4, reverse = TRUE)
 }
 \seealso{
 Other color palette functions: 
-\code{\link{washi_pal_setup}()},
-\code{\link{washi_pal}}
+\code{\link{washi_pal}},
+\code{\link{washi_pal_setup}()}
 }
 \concept{color palette functions}

@@ -29,7 +29,7 @@ washi_pal_setup("green_gradient", 12)
 }
 \seealso{
 Other color palette functions: 
-\code{\link{washi_pal_view}()},
-\code{\link{washi_pal}}
+\code{\link{washi_pal}},
+\code{\link{washi_pal_view}()}
 }
 \concept{color palette functions}

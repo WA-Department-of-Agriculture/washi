@@ -42,7 +42,7 @@ washi_scale <- function(
   reverse = FALSE,
   discrete = TRUE,
   ...
-    ) {
+) {
   pal <- washi_pal_setup(palette = palette, reverse = reverse)
 
   if (alpha < 0 | alpha > 1) {
@@ -50,9 +50,7 @@ washi_scale <- function(
   }
 
   if (!is.logical(discrete)) {
-    cli::cli_abort(c(
-      "`discrete` must be `TRUE` or `FALSE`."
-    ))
+    cli::cli_abort("`discrete` must be `TRUE` or `FALSE`.")
   }
 
   pal <- scales::alpha(pal, rep_len(alpha, length(pal)))
@@ -62,7 +60,7 @@ washi_scale <- function(
   if (discrete == TRUE) {
     ggplot2::discrete_scale(
       aesthetics = aesthetics,
-      scale_name = paste0("washi_", palette),
+      name = paste0("washi_", palette),
       palette = scales::manual_pal(pal),
       ...
     )

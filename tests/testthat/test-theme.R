@@ -20,15 +20,15 @@ test_that("washi_theme() works", {
     washi_theme()
 
   # Check that a ggplot object is returned
-  expect_true(ggplot2::is.ggplot(plot))
+  expect_true(ggplot2::is_ggplot(plot))
 
   # Check that gridline_y = FALSE and gridline_x = FALSE work
   theme <- washi_theme(
     gridline_y = FALSE,
     gridline_x = FALSE
   )
-  expect_equal(length(theme$panel.grid.major.x), 0)
-  expect_equal(length(theme$panel.grid.major.y), 0)
+  expect_s7_class(theme$panel.grid.major.x, ggplot2::element_blank)
+  expect_s7_class(theme$panel.grid.major.y, ggplot2::element_blank)
 
   # Check a snapshot
   vdiffr::expect_doppelganger(

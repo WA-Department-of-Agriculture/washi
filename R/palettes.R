@@ -140,7 +140,7 @@ washi_pal_setup <- function(
   palette = "standard",
   n,
   reverse = FALSE
-    ) {
+) {
   if (!palette %in% names(washi_pal)) {
     cli::cli_abort(c(
       "There is no palette called `{palette}`.",
@@ -149,9 +149,9 @@ washi_pal_setup <- function(
   }
 
   if (!is.logical(reverse)) {
-    cli::cli_abort(c(
+    cli::cli_abort(
       "`reverse` must be `TRUE` or `FALSE`."
-    ))
+    )
   }
 
   if (missing(n)) {
@@ -159,14 +159,16 @@ washi_pal_setup <- function(
   }
 
   if (!is.numeric(n) | is.null(n)) {
-    cli::cli_abort(c(
+    cli::cli_abort(
       "`n` must be numeric."
-    ))
+    )
   }
 
   pal <- washi_pal[[palette]]
 
-  if (reverse) pal <- rev(pal)
+  if (reverse) {
+    pal <- rev(pal)
+  }
 
   grDevices::colorRampPalette(pal)(n)
 }
@@ -190,7 +192,7 @@ washi_pal_view <- function(
   palette = "color_blind",
   n,
   reverse = FALSE
-    ) {
+) {
   if (missing(n)) {
     n <- length(washi_pal[[palette]])
   }
