@@ -45,11 +45,11 @@ Creates a flextable in WaSHI's style.
 subset(
   example_data_wide,
   select = c(
-    "sampleId",
+    "sample_id",
     "county",
     "crop",
-    "totalN_\%",
-    "totalC_\%"
+    "total_n_percent",
+    "total_c_percent"
   )
 ) |>
   washi_flextable(cols_bold = 1)

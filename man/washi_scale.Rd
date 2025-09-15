@@ -48,14 +48,14 @@ library(ggplot2)
 # Discrete scale
 example_data_wide |>
   subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
-  ggplot(aes(x = pH, y = Mn_mg.kg, color = crop)) +
+  ggplot(aes(x = ph, y = mn_mg_kg, color = crop)) +
   geom_point(size = 2.5) +
   theme_minimal() +
   washi_scale()
 
 # Continuous scale
 example_data_wide |>
-  ggplot(aes(x = `totalC_\%`, y = poxC_mg.kg, color = poxC_mg.kg)) +
+  ggplot(aes(x = total_c_percent, y = poxc_mg_kg, color = poxc_mg_kg)) +
   geom_point(size = 2.5) +
   theme_minimal() +
   washi_scale("green_gradient", reverse = TRUE, discrete = FALSE)

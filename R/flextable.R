@@ -23,11 +23,11 @@
 #' subset(
 #'   example_data_wide,
 #'   select = c(
-#'     "sampleId",
+#'     "sample_id",
 #'     "county",
 #'     "crop",
-#'     "totalN_%",
-#'     "totalC_%"
+#'     "total_n_percent",
+#'     "total_c_percent"
 #'   )
 #' ) |>
 #'   washi_flextable(cols_bold = 1)
@@ -40,7 +40,7 @@ washi_flextable <- function(
   header_font_color = "white",
   header_bg_color = washi_pal[["standard"]][["green"]],
   border_color = washi_pal[["standard"]][["tan"]]
-    ) {
+) {
   # Change font to "sans" if given font isn't found
   check_fonts(
     header_font = header_font,

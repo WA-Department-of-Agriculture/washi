@@ -10,8 +10,8 @@
 columns:
 \describe{
 \item{year}{Year of sample}
-\item{sampleId, producerId, fieldId}{Anonymized IDs}
-\item{farmName, producerName, fieldName}{Anonymized names}
+\item{sample_id, producer_id, field_id}{Anonymized IDs}
+\item{farm_name, producer_name, field_name}{Anonymized names}
 \item{longitude, latitude}{Truncated coordinates}
 \item{texture}{Measured soil texture}
 \item{other columns}{Column name includes measurement and units; value is the measurement results}

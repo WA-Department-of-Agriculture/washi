@@ -63,25 +63,19 @@ All changed defaults from this function can be overridden by another
 call to \code{\link[ggplot2:theme]{ggplot2::theme()}} with the desired changes.
 }
 \examples{
-# NOTE: These examples do not use Poppins or Lato in order to pass
-# automated checks on computers without these fonts installed.
-
 library(ggplot2)
 
 # Single geom_point plot
 example_data_wide |>
   subset(crop \%in\% c("Apple", "Cherry", "Potato")) |>
-  ggplot(aes(x = pH, y = Mn_mg.kg, color = crop)) +
+  ggplot(aes(x = ph, y = mn_mg_kg, color = crop)) +
   labs(
     title = "Scatter plot of pH and Mn (mg/kg)",
     subtitle = "Example with geom_point().",
     caption = "This is a caption."
   ) +
   geom_point(size = 2.5) +
-  washi_theme(
-    header_font = "sans",
-    body_font = "sans"
-  ) +
+  washi_theme() +
   washi_scale()
 
 # Bar plot
@@ -110,8 +104,6 @@ if (requireNamespace("forcats")) {
     washi_theme(
       gridline_y = FALSE,
       gridline_x = FALSE,
-      header_font = "sans",
-      body_font = "sans"
     ) +
     # Remove x-axis
     theme(axis.text.x = element_blank())
@@ -119,7 +111,7 @@ if (requireNamespace("forcats")) {
 
 # Facetted geom_density plots
 example_data_long |>
-  subset(measurement \%in\% c("totalC_\%", "poxC_mg.kg") &
+  subset(measurement \%in\% c("total_c_percent", "poxc_mg_kg") &
     !texture == "Loamy Sand") |>
   ggplot(aes(x = value, fill = texture, color = texture)) +
   labs(
@@ -129,9 +121,7 @@ example_data_long |>
   geom_density(alpha = 0.4) +
   facet_wrap(. ~ measurement, scales = "free") +
   washi_theme(
-    legend_position = "bottom",
-    header_font = "sans",
-    body_font = "sans"
+    legend_position = "bottom"
   ) +
   washi_scale() +
   xlab(NULL) +
