@@ -1,4 +1,7 @@
-# washi (development version)
+# washi 0.2.1
+
+* Fix unit test from {ggplot2} v4 update
+* Use snake_case for all column names in example data and examples
 
 # washi 0.2.0
 
