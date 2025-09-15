@@ -64,6 +64,8 @@ call to \code{\link[ggplot2:theme]{ggplot2::theme()}} with the desired changes.
 }
 \examples{
 library(ggplot2)
+# NOTE: These examples do not use Poppins or Lato in order to pass
+# automated checks on computers without these fonts installed.
 
 # Single geom_point plot
 example_data_wide |>
@@ -75,7 +77,10 @@ example_data_wide |>
     caption = "This is a caption."
   ) +
   geom_point(size = 2.5) +
-  washi_theme() +
+  washi_theme(
+    header_font = "sans",
+    body_font = "sans"
+  ) +
   washi_scale()
 
 # Bar plot
@@ -104,6 +109,8 @@ if (requireNamespace("forcats")) {
     washi_theme(
       gridline_y = FALSE,
       gridline_x = FALSE,
+      header_font = "sans",
+      body_font = "sans"
     ) +
     # Remove x-axis
     theme(axis.text.x = element_blank())
@@ -121,7 +128,9 @@ example_data_long |>
   geom_density(alpha = 0.4) +
   facet_wrap(. ~ measurement, scales = "free") +
   washi_theme(
-    legend_position = "bottom"
+    legend_position = "bottom",
+    header_font = "sans",
+    body_font = "sans"
   ) +
   washi_scale() +
   xlab(NULL) +
