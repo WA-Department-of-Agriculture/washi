@@ -22,7 +22,7 @@ coverage](https://codecov.io/gh/WA-Department-of-Agriculture/washi/branch/main/g
 Inspired by other branding R packages such as
 [`glitr`](https://github.com/USAID-OHA-SI/glitr),
 [`ratlas`](https://github.com/atlas-aai/ratlas), and
-[`nmfspalette`](https://github.com/nmfs-fish-tools/nmfspalette), `washi`
+[`nmfspalette`](https://github.com/nmfs-ost/nmfspalette), `washi`
 provides color palettes and themes consistent with [Washington Soil
 Health Initiative](https://washingtonsoilhealthinitiative.com/) (WaSHI)
 branding. This package is to be used only by direct collaborators within
@@ -40,6 +40,7 @@ code.
 ## Video Walkthrough
 
 <p>
+
 <a href="https://www.loom.com/share/8de49c836754433695b6e1da503cf8fd?sid=c86a6413-5309-4ac5-a6ec-9601061acd7f" class="external-link" target="_blank"><img src="man/figures/README-loom.png" data-fig-alt="Screenshot of video walkthrough of `washi` R package."></a>
 </p>
 
@@ -105,7 +106,7 @@ knitr::opts_chunk$set(dev = "ragg_png")
 Learn more about `ragg` in the [package
 documentation](https://ragg.r-lib.org/index.html) and custom fonts from
 [June Choe’s blog
-post](https://yjunechoe.github.io/posts/2021-06-24-setting-up-and-debugging-custom-fonts).
+post](https://yjunechoe.github.io/posts/2021-06-24-setting-up-and-debugging-custom-fonts/).
 
 ## Palettes
 
@@ -167,13 +168,14 @@ library(ggplot2)
 
 # 1. Prepare data
 example_data_long |>
-  subset(measurement %in% c("totalC_%", "poxC_mg.kg") &
+  subset(measurement %in% c("total_c_percent", "poxc_mg_kg") &
     !texture == "Loamy Sand") |>
   # 2. Pipe to ggplot()
   ggplot(aes(x = value, fill = texture, color = texture)) +
   labs(
     title = "Distribution of POXC (mg/kg) and Total C (%)",
-    subtitle = "Example with geom_density() and facet_wrap()."
+    subtitle = "Example with geom_density() and facet_wrap().",
+    
   ) +
   geom_density(alpha = 0.4) +
   facet_wrap(. ~ measurement, scales = "free") +
@@ -194,7 +196,7 @@ example_data_long |>
 # Single geom_point plot
 example_data_wide |>
   subset(crop %in% c("Apple", "Cherry", "Potato")) |>
-  ggplot(aes(x = pH, y = Mn_mg.kg, color = crop)) +
+  ggplot(aes(x = ph, y = mn_mg_kg, color = crop)) +
   labs(
     title = "Scatter plot of pH and Mn (mg/kg)",
     subtitle = "Example with geom_point().",
@@ -247,10 +249,10 @@ fonts, and styling.
 ft <- example_data_wide |>
   head(5) |>
   subset(select = c(
-    "sampleId",
+    "sample_id",
     "crop",
-    "totalN_%",
-    "totalC_%"
+    "total_n_percent",
+    "total_c_percent"
   )) |>
   washi_flextable(cols_bold = 1)
 ```
