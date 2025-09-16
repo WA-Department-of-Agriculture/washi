@@ -60,7 +60,6 @@ washi_scale <- function(
   if (discrete == TRUE) {
     ggplot2::discrete_scale(
       aesthetics = aesthetics,
-      name = paste0("washi_", palette),
       palette = scales::manual_pal(pal),
       ...
     )
